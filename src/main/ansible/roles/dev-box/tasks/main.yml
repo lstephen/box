@@ -1,0 +1,7 @@
+---
+- name: "Install dev-box"
+  apt: pkg={{ item }} install_recommends=no
+  with_items:
+    - openjdk-7-jdk
+    - vagrant
+

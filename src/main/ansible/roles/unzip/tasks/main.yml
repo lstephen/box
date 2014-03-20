@@ -1,0 +1,4 @@
+---
+- name: "Install unzip"
+  apt: pkg=unzip install_recommends=no
+

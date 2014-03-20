@@ -1,0 +1,29 @@
+---
+- name: Add vagrant user
+  user: name=vagrant home={{ vagrant_home }} groups=sudo shell=/bin/bash
+
+- name: Create vagrant's ssh directory
+  file: path={{ vagrant_home }}/.ssh state=directory mode=0700
+
+- name: Download vagrant key
+  get_url: url=https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub
+           dest=/tmp/vagrant.pub
+
+- name: Add vagrant public key
+  authorized_key: user=vagrant key="{{ lookup('file', '/tmp/vagrant.pub') }}"
+
+- name: Ensure authorized_keys has correct permissions
+  file: path={{ vagrant_home }}/.ssh/authorized_keys mode=0600
+
+- name: Setup password-less sudo
+  copy: src=sudoers.d
+        dest=/etc/sudoers.d/vagrant
+        mode=0440
+        owner=root
+        group=root
+        validate="visudo -cf %s"
+
+- name: Install VirtualBox guest additions {{ item }}
+  apt: pkg=virtualbox-guest-dkms install_recommends=no
+
+

@@ -1,0 +1,9 @@
+---
+- name: "Install remote-gui"
+  apt: pkg={{ item }} install_recommends=no
+  with_items:
+    - xserver-xephyr
+    - x11-xserver-utils
+    - xmonad
+    - rxvt-unicode
+

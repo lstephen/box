@@ -1,0 +1,134 @@
+
+import org.apache.commons.io.FilenameUtils
+
+version = '1.0-SNAPSHOT'
+
+buildscript {
+    repositories {
+        ivy {
+            name "ivyLocal"
+            url "${System.getProperty('user.home')}/.ivy/repo"
+        }
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.mylonelybear:MlbGradlePlugins:latest.integration'
+        classpath 'commons-io:commons-io:2.4'
+    }
+}
+
+ext {
+    buildDir = 'build'
+    ansibleBuildDir = "$buildDir/ansible"
+    baseBuildDir = "$buildDir/base"
+    boxBuildDir = "$buildDir/box"
+    packerBuildDir = "$buildDir/packer"
+
+    srcDir = 'src/main'
+    ansibleSrcDir = "$srcDir/ansible"
+    packerSrcDir = "$srcDir/packer"
+
+    distDir = 'dist'
+}
+
+def ansibleCommonDir = file(ansibleSrcDir)
+def packerSrcFile = file('src/main/packer/packer.json')
+def provisionSrcFile = file('src/main/packer/provision.sh')
+
+allprojects {
+    apply plugin: 'mylonelybear'
+    defaultTasks 'dist'
+}
+
+subprojects {
+    configurations {
+        base { transitive = false }
+        'default' { extendsFrom base }
+    }
+
+    task clean << {
+        delete buildDir
+    }
+
+    task prepare {
+        outputs.dir baseBuildDir
+        outputs.dir ansibleBuildDir
+
+        inputs.files configurations.base
+        inputs.dir ansibleSrcDir
+        inputs.dir ansibleCommonDir
+
+        doLast {
+            def baseBox = file(configurations.base.asPath)
+            copy {
+                from zipTree(baseBox)
+                into baseBuildDir
+            }
+
+
+            project.ext.baseBox = FilenameUtils.removeExtension(baseBox.name) + ".ovf"
+            
+            file(ansibleBuildDir).mkdirs()
+
+            copy {
+                from ansibleCommonDir
+                into ansibleBuildDir
+            }
+
+            copy {
+                from ansibleSrcDir
+                into ansibleBuildDir
+            }
+        }
+    }
+
+    task build(dependsOn: prepare) {
+        inputs.file prepare.outputs.files
+        inputs.file packerSrcDir
+        outputs.dir packerBuildDir
+
+        doLast {
+            copy {
+                from packerSrcFile
+                into packerBuildDir
+                expand(project: project)
+            }
+
+            copy {
+                from provisionSrcFile
+                into packerBuildDir
+            }
+
+            delete boxBuildDir
+
+            project.exec {
+                executable 'packer'
+                args 'build', "${packerBuildDir}/${packerSrcFile.name}"
+            }
+        }
+    }
+
+    task dist(type: Zip, dependsOn: build) {
+        baseName = project.name
+        from boxBuildDir
+        destinationDir = file(distDir)
+    }
+
+    artifacts {
+        base dist.outputs.files.singleFile
+    }
+
+    publish.dependsOn dist
+
+    publishing {
+        publications {
+            ivy (IvyPublication) {
+                artifact dist
+            }
+        }
+    }
+}
+
+
+
+

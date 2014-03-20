@@ -1,0 +1,4 @@
+Defaults:vagrant !requiretty
+
+vagrant ALL=(ALL) NOPASSWD: ALL
+

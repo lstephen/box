@@ -1,0 +1,9 @@
+---
+- name: "Install lightdm"
+  apt: pkg={{ item }} install_recommends=no
+  with_items:
+    - lightdm
+    - lightdm-gtk-greeter
+
+- name: "Copy lightdm.conf"
+  copy: src=lightdm.conf dest=/etc/lightdm

@@ -1,0 +1,20 @@
+---
+- name: Set hostname
+  hostname: name=boxdev
+
+- name: Update hosts file
+  copy: src=hosts dest=/etc/hosts mode=0644 owner=root group=root
+
+- name: Copy mount script
+  copy: src=mount-boxdev.sh dest=/sbin mode=0755 owner=root group=root
+
+- name: Copy upstart script for mounting drives
+  copy: src=mount-boxdev.conf dest=/etc/init mode=0644 owner=root group=root
+
+- name: Add boxdev user
+  user: name=boxdev 
+        home={{ boxdev_home }} 
+        groups=sudo 
+        createhome=no 
+        shell=/bin/bash
+        password="{{ lookup('file', 'boxdev.passwd') }}"

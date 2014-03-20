@@ -1,0 +1,31 @@
+<% import static org.apache.commons.io.FilenameUtils.separatorsToUnix %>
+
+{
+    "builders": [
+        {
+            "vm_name": "${project.name}",
+            "type": "virtualbox-ovf",
+            "source_path": "${separatorsToUnix(project.baseBuildDir)}/${project.baseBox}",
+            "output_directory": "${separatorsToUnix(project.boxBuildDir)}",
+            "ssh_username": "boxbase",
+            "ssh_password": "boxbase",
+            "shutdown_command": "echo 'boxbase' | sudo -S shutdown -P now",
+            "headless": true,
+            "vboxmanage": [
+                ["modifyvm", "{{.Name}}", "--hwvirtex", "off"]
+            ]
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "file",
+            "source": "${project.ansibleBuildDir}",
+            "destination": "/home/boxbase"
+        },
+        {
+            "type": "shell",
+            "script": "${project.packerBuildDir}/provision.sh"
+        }
+    ]
+}
+

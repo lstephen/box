@@ -1,0 +1,4 @@
+---
+- name: "Install dbus-x11"
+  apt: pkg=dbus-x11 install_recommends=no
+

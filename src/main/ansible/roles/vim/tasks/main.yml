@@ -1,0 +1,9 @@
+---
+- name: "Install vim"
+  apt: pkg=vim install_recommends=no
+  
+- name: "Copy .vimrc"
+  copy: src=.vimrc dest=/etc/skel
+
+- name: "Set vim as EDITOR"
+  lineinfile: dest=/etc/skel/.bashrc line="export EDITOR=vim"
