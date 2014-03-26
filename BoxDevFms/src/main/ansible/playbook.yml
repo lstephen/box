@@ -1,0 +1,4 @@
+- hosts: local
+  sudo: yes
+  roles:
+    - dev-fms

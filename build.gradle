@@ -1,8 +1,6 @@
 
 import org.apache.commons.io.FilenameUtils
 
-version = '1.0-SNAPSHOT'
-
 buildscript {
     repositories {
         ivy {
@@ -23,6 +21,7 @@ ext {
     baseBuildDir = "$buildDir/base"
     boxBuildDir = "$buildDir/box"
     packerBuildDir = "$buildDir/packer"
+    vagrantBuildDir = "$buildDir/vagrant"
 
     srcDir = 'src/main'
     ansibleSrcDir = "$srcDir/ansible"
@@ -40,33 +39,34 @@ allprojects {
     defaultTasks 'dist'
 }
 
-subprojects {
+subprojects { sp ->
+    version = 'dev'
+
     configurations {
-        base { transitive = false }
-        'default' { extendsFrom base }
+        base
+        virtualbox
+        vagrant
     }
 
     task clean << {
         delete buildDir
     }
 
-    task prepare {
+    task prepare() {
         outputs.dir baseBuildDir
         outputs.dir ansibleBuildDir
 
         inputs.files configurations.base
+        inputs.files packerSrcFile
+        inputs.files provisionSrcFile
         inputs.dir ansibleSrcDir
         inputs.dir ansibleCommonDir
 
         doLast {
-            def baseBox = file(configurations.base.asPath)
             copy {
-                from zipTree(baseBox)
+                from zipTree(configurations.base.asPath)
                 into baseBuildDir
             }
-
-
-            project.ext.baseBox = FilenameUtils.removeExtension(baseBox.name) + ".ovf"
             
             file(ansibleBuildDir).mkdirs()
 
@@ -86,8 +86,12 @@ subprojects {
         inputs.file prepare.outputs.files
         inputs.file packerSrcDir
         outputs.dir packerBuildDir
+        outputs.dir vagrantBuildDir
+        outputs.dir boxBuildDir
 
         doLast {
+            project.ext.baseBox = fileTree(dir: baseBuildDir, include: '*.ovf').singleFile.name
+
             copy {
                 from packerSrcFile
                 into packerBuildDir
@@ -101,6 +105,8 @@ subprojects {
 
             delete boxBuildDir
 
+            file(vagrantBuildDir).mkdirs()
+
             project.exec {
                 executable 'packer'
                 args 'build', "${packerBuildDir}/${packerSrcFile.name}"
@@ -108,14 +114,28 @@ subprojects {
         }
     }
 
-    task dist(type: Zip, dependsOn: build) {
+    task distVirtualBox(type: Zip, dependsOn: build) {
         baseName = project.name
         from boxBuildDir
         destinationDir = file(distDir)
     }
 
+    task distVagrant(dependsOn: build) { 
+        outputs.file "$distDir/${project.name}.box"
+
+        doLast {
+            copy {
+                from vagrantBuildDir
+                into distDir
+            }
+        }
+    }
+
+    task dist(dependsOn: [distVirtualBox, distVagrant])
+
     artifacts {
-        base dist.outputs.files.singleFile
+        virtualbox distVirtualBox
+        vagrant distVagrant.outputs.files.singleFile
     }
 
     publish.dependsOn dist
@@ -123,12 +143,16 @@ subprojects {
     publishing {
         publications {
             ivy (IvyPublication) {
-                artifact dist
+                artifact(distVirtualBox) {
+                    type = 'virtualbox'
+                }
+            }
+            ivy (IvyPublication) {
+                artifact(distVagrant.outputs.files.singleFile) {
+                    type = 'vagrant'
+                }
             }
         }
     }
 }
-
-
-
 

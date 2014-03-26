@@ -1,2 +1,4 @@
 .gradle
 packer_cache
+.kitchen/
+.kitchen.local.yml

@@ -1,7 +1,6 @@
 ---
-- name: "Install dev-common"
+- name: "Install dev-java"
   apt: pkg={{ item }} install_recommends=no
   with_items:
-    - git
-    - screen
+    - openjdk-7-jdk
 

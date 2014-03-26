@@ -1,0 +1,5 @@
+---
+dependencies:
+  - { role: dev-java }
+  - { role: remote-gui }
+

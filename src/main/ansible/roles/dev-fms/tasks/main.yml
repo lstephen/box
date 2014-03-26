@@ -1,7 +1,5 @@
 ---
-- name: "Install dev-common"
+- name: "Install dev-fms"
   apt: pkg={{ item }} install_recommends=no
   with_items:
-    - git
-    - screen
-
+    - netbeans

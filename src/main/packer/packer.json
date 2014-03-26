@@ -26,6 +26,13 @@
             "type": "shell",
             "script": "${project.packerBuildDir}/provision.sh"
         }
+    ],
+    "post-processors": [
+        {
+            "type": "vagrant",
+            "output": "${separatorsToUnix(project.vagrantBuildDir)}/${project.name}.box",
+            "keep_input_artifact": true
+        }
     ]
 }
 

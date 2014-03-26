@@ -1,5 +1,5 @@
 
 dependencies {
-    base project(':BoxAnsible')
+    base project(path: ':BoxAnsible', configuration: 'virtualbox')
 }
 

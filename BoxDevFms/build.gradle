@@ -1,0 +1,6 @@
+
+dependencies {
+    base project(path: ':BoxDevJava', configuration: 'virtualbox')
+}
+
+
