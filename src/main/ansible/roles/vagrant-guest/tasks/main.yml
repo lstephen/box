@@ -23,7 +23,7 @@
         group=root
         validate="visudo -cf %s"
 
-- name: Install VirtualBox guest additions {{ item }}
+- name: Install vagrant-guest
   apt: pkg=virtualbox-guest-dkms install_recommends=no
 
 

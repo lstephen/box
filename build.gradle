@@ -21,6 +21,7 @@ ext {
     baseBuildDir = "$buildDir/base"
     boxBuildDir = "$buildDir/box"
     packerBuildDir = "$buildDir/packer"
+    serverspecBuildDir = "$buildDir/serverspec"
     vagrantBuildDir = "$buildDir/vagrant"
 
     srcDir = 'src/main'
@@ -28,11 +29,15 @@ ext {
     packerSrcDir = "$srcDir/packer"
 
     distDir = 'dist'
+
+    testDir = 'src/test'
+    serverspecTestDir = "$testDir/serverspec"
 }
 
 def ansibleCommonDir = file(ansibleSrcDir)
 def packerSrcFile = file('src/main/packer/packer.json')
 def provisionSrcFile = file('src/main/packer/provision.sh')
+def serverspecTestCommonDir = file(serverspecTestDir)
 
 allprojects {
     apply plugin: 'mylonelybear'
@@ -107,7 +112,7 @@ subprojects { sp ->
 
             file(vagrantBuildDir).mkdirs()
 
-            project.exec {
+            exec {
                 executable 'packer'
                 args 'build', "${packerBuildDir}/${packerSrcFile.name}"
             }
@@ -121,6 +126,7 @@ subprojects { sp ->
     }
 
     task distVagrant(dependsOn: build) { 
+        inputs.dir vagrantBuildDir
         outputs.file "$distDir/${project.name}.box"
 
         doLast {
@@ -130,6 +136,12 @@ subprojects { sp ->
             }
         }
     }
+
+    task installVagrant(type: Exec, dependsOn: distVagrant) {
+        executable 'vagrant'
+        args 'box', 'add', "$distDir/${project.name}.box", '--name', "${project.name}", '--force'
+    }
+
 
     task dist(dependsOn: [distVirtualBox, distVagrant])
 
@@ -152,6 +164,40 @@ subprojects { sp ->
                     type = 'vagrant'
                 }
             }
+        }
+    }
+
+    task test(dependsOn: installVagrant) << {
+        delete serverspecBuildDir
+        file(serverspecBuildDir).mkdirs()
+
+        copy {
+            from serverspecTestCommonDir
+            into serverspecBuildDir
+            expand(project: project)
+        }
+
+        copy {
+            from serverspecTestDir
+            into serverspecBuildDir
+        }
+
+        exec {
+            executable 'ruby'
+            args '-S', 'rspec', '--default-path', '.', '-I', '.'
+            workingDir file(serverspecBuildDir)
+        }
+
+        exec {
+            executable 'vagrant'
+            args 'halt'
+            workingDir file(serverspecBuildDir)
+        }
+
+        exec {
+            executable 'vagrant'
+            args 'destroy', '-f'
+            workingDir file(serverspecBuildDir)
         }
     }
 }

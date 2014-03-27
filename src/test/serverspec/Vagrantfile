@@ -1,0 +1,13 @@
+
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+    config.vm.box = "${project.name}"
+
+    config.vm.synced_folder ".", "/vagrant", disabled: true
+
+    config.vm.provider "virtualbox" do |v|
+        v.name = "${project.name}Test"
+        v.customize ["modifyvm", :id, "--hwvirtex", "off"]
+    end
+end

@@ -1,5 +1,7 @@
 ---
 dependencies:
+  - { role: vagrant-guest }
   - { role: dev-java }
   - { role: remote-gui }
+
 
