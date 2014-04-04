@@ -1,0 +1,22 @@
+---
+- name: Download serf
+  get_url:
+    url=https://dl.bintray.com/mitchellh/serf/0.5.0_linux_386.zip
+    dest=/tmp/serf-0.5.0_linux_386.zip
+    sha256sum=9f036ef7243dff4bdc09ff5ad79f4430d72de6c44a710013f1f823000615961c
+
+- name: Install serf
+  unarchive: src=/tmp/serf-0.5.0_linux_386.zip dest=/usr/local/bin copy=no
+
+- name: Create serf group
+  group: name=serf state=present
+
+- name: Create serf user
+  user: name=serf createhome=no group=serf
+
+- name: Install serf upstart script
+  copy: src=serf.conf dest=/etc/init/serf.conf owner=root group=root mode=0644
+
+- name: Create serf configuration directory
+  file: dest=/etc/serf state=directory owner=root group=root mode=0755
+

@@ -1,0 +1,8 @@
+---
+- name: Install incron
+  apt: pkg=incron install_recommends=no
+
+- name: Install incron upstart script
+  copy: src=incron.conf dest=/etc/init/incron.conf owner=root group=root mode=0644
+
+

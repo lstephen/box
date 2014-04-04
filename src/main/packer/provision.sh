@@ -3,11 +3,12 @@
 set -e
 
 function as_root {
-    echo 'boxbase' | sudo -S $@
+    echo 'box' | sudo -S $@
 }
 
 as_root apt-get update
-as_root /bin/bash /home/boxbase/ansible/ansible-install.sh
+as_root apt-get install --no-install-recommends -y python-dev gcc
+as_root /bin/bash /home/box/ansible/ansible-install.sh
 
-as_root ansible-playbook -v -i /home/boxbase/ansible/hosts /home/boxbase/ansible/playbook.yml
+as_root ansible-playbook -v -i /home/box/ansible/hosts /home/box/ansible/playbook.yml
 

@@ -1,0 +1,40 @@
+<% import static org.apache.commons.io.FilenameUtils.separatorsToUnix %>
+
+{
+    "builders": [
+        {
+            "vm_name": "${project.name}",
+            "type": "virtualbox-iso",
+            "guest_os_type": "Ubuntu",
+            "guest_additions_mode": "disable",
+            "output_directory": "${separatorsToUnix(project.boxBuildDir)}",
+            "iso_url": "http://releases.ubuntu.com/12.04.4/ubuntu-12.04.4-server-i386.iso",
+            "iso_checksum": "0081e57fb8c7e4094fb9767384f087c6",
+            "iso_checksum_type": "md5",
+            "ssh_username": "box",
+            "ssh_password": "box",
+            "shutdown_command": "echo 'box' | sudo -S shutdown -P now",
+            "http_directory": "${separatorsToUnix(project.packerSrcDir)}",
+            "headless": false,
+            "boot_command": [
+                "<esc><esc><enter><wait>",
+                "/install/vmlinuz ",
+                "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg ",
+                "locale=en_US ",
+                "hostname={{ .Name }} ",
+                "keyboard-configuration/modelcode=SKIP ",
+                "initrd=/install/initrd.gz -- <enter>"
+            ],
+            "vboxmanage": [
+                ["modifyvm", "{{.Name}}", "--hwvirtex", "off"]
+            ]
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "shell",
+            "script": "${project.packerBuildDir}/networking.sh"
+        }
+    ]
+}
+

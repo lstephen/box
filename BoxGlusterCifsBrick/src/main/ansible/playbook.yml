@@ -1,0 +1,13 @@
+---
+- hosts: all
+  roles:
+  - { role: box-common, hostname: BoxGlusterCifsBrick }
+  - serf
+  tasks:
+  - name: Install gluster
+    apt: pkg=glusterfs-server install_recommends=no
+
+  - name: Create brick directory
+    file: path=/data/glusterfs/sharedvol state=directory
+
+

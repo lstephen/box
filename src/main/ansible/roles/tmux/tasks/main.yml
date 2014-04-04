@@ -1,0 +1,14 @@
+---
+- name: "Install tmux"
+  apt: pkg=tmux install_recommends=no
+
+- name: "Copy .tmux.conf"
+  copy: src=.tmux.conf dest=/etc/skel
+
+- name: "Add to .bashrc"
+  lineinfile:
+    dest=/etc/skel/.bashrc
+    state=present
+    insertafter=EOF
+    line="[[ ! $TERM =~ screen ]] && exec tmux"
+

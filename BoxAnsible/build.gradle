@@ -1,5 +1,5 @@
 
 dependencies {
-    base 'com.mylonelybear:BoxBase:latest.integration'
+    base project(path: ':BoxBase', configuration: 'virtualbox')
 }
 

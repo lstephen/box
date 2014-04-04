@@ -1,4 +1,5 @@
 - hosts: local
   sudo: yes
   roles:
+    - { role: box-common, hostname: BoxDevFms }
     - dev-fms

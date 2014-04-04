@@ -27,6 +27,8 @@ ext {
     srcDir = 'src/main'
     ansibleSrcDir = "$srcDir/ansible"
     packerSrcDir = "$srcDir/packer"
+    
+    packerSrcFile = "$packerSrcDir/packer.json"
 
     distDir = 'dist'
 
@@ -35,13 +37,17 @@ ext {
 }
 
 def ansibleCommonDir = file(ansibleSrcDir)
-def packerSrcFile = file('src/main/packer/packer.json')
-def provisionSrcFile = file('src/main/packer/provision.sh')
+def packerCommonSrcDir = file(packerSrcDir)
+def packerCommonSrcFile = file(packerSrcFile)
 def serverspecTestCommonDir = file(serverspecTestDir)
 
 allprojects {
     apply plugin: 'mylonelybear'
     defaultTasks 'dist'
+}
+
+def hasBaseBox(project) {
+    project.configurations.base.asPath != ''
 }
 
 subprojects { sp ->
@@ -53,6 +59,7 @@ subprojects { sp ->
         vagrant
     }
 
+
     task clean << {
         delete buildDir
     }
@@ -62,15 +69,15 @@ subprojects { sp ->
         outputs.dir ansibleBuildDir
 
         inputs.files configurations.base
-        inputs.files packerSrcFile
-        inputs.files provisionSrcFile
         inputs.dir ansibleSrcDir
         inputs.dir ansibleCommonDir
 
         doLast {
-            copy {
-                from zipTree(configurations.base.asPath)
-                into baseBuildDir
+            if (hasBaseBox(sp)) {
+                copy {
+                    from zipTree(configurations.base.asPath)
+                    into baseBuildDir
+                }
             }
             
             file(ansibleBuildDir).mkdirs()
@@ -89,23 +96,39 @@ subprojects { sp ->
 
     task build(dependsOn: prepare) {
         inputs.file prepare.outputs.files
-        inputs.file packerSrcDir
+        inputs.dir packerCommonSrcDir
+        inputs.dir packerSrcDir
         outputs.dir packerBuildDir
         outputs.dir vagrantBuildDir
         outputs.dir boxBuildDir
 
         doLast {
-            project.ext.baseBox = fileTree(dir: baseBuildDir, include: '*.ovf').singleFile.name
+            project.ext.baseBox = hasBaseBox(sp) \
+                  ? fileTree(dir: baseBuildDir, include: '*.ovf')
+                      .singleFile
+                      .name
+                  : ''
 
             copy {
-                from packerSrcFile
+                from packerCommonSrcDir
+                into packerBuildDir
+            }
+
+            copy {
+                from packerCommonSrcFile
                 into packerBuildDir
                 expand(project: project)
             }
 
             copy {
-                from provisionSrcFile
+                from packerSrcDir
                 into packerBuildDir
+            }
+
+            copy {
+                from packerSrcFile
+                into packerBuildDir
+                expand(project: project)
             }
 
             delete boxBuildDir
@@ -114,7 +137,7 @@ subprojects { sp ->
 
             exec {
                 executable 'packer'
-                args 'build', "${packerBuildDir}/${packerSrcFile.name}"
+                args 'build', "${packerBuildDir}/${file(packerSrcFile).name}"
             }
         }
     }

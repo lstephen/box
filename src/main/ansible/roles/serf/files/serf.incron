@@ -1,0 +1,1 @@
+/etc/serf IN_CREATE,IN_MODIFY,IN_DELETE service serf restart
