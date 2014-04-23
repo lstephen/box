@@ -20,3 +20,26 @@
 - name: Create serf configuration directory
   file: dest=/etc/serf state=directory owner=root group=root mode=0755
 
+- name: Create serf event handlers directory
+  file: dest=/etc/serf/event_handler.d state=directory owner=root group=root mode=0755
+
+- name: Copy serf event handlers
+  copy: src={{ item }} dest=/etc/serf/event_handler.d owner=root group=root mode=0755
+  with_items:
+  - 30-update_hosts.sudo.sh
+
+- name: Setup password-less sudo for event handlers
+  copy: src=sudoers.d
+        dest=/etc/sudoers.d/serf
+        mode=0440
+        owner=root
+        group=root
+        validate="visudo -cf %s"
+
+- name: Create serf event handler
+  copy: src=event_handler.sh dest=/etc/serf owner=root group=root mode=0755
+
+- name: Create event handler configuration
+  copy: src=50-event_handler.json dest=/etc/serf/50-event_handler.json owner=root group=root mode=0644
+
+

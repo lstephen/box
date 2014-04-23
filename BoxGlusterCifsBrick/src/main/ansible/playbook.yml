@@ -4,10 +4,23 @@
   - { role: box-common, hostname: BoxGlusterCifsBrick }
   - serf
   tasks:
-  - name: Install gluster
-    apt: pkg=glusterfs-server install_recommends=no
+  - name: Install BoxGlusterCifsBrick
+    apt: pkg={{ item }} install_recommends=no
+    with_items:
+    - glusterfs-server
+    - cifs-utils
 
   - name: Create brick directory
     file: path=/data/glusterfs/sharedvol state=directory
+
+  - name: Create box mount directory
+    file: path=/mnt/box state=directory
+
+  - name: Add CIFS share to fstab
+    lineinfile:
+      insertafter=EOF
+      line="//10.0.2.2/box /mnt/box cifs credentials=/etc/samba/box.cifs.credentials"
+      dest=/etc/fstab
+
 
 

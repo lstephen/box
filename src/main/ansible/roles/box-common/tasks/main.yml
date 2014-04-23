@@ -23,4 +23,13 @@
 - name: Create box conf directory
   file: dest=/etc/box state=directory owner=root group=root mode=0755
 
+- name: Set better directory color for ls
+  lineinfile: 
+    dest={{ item }}
+    state=present
+    insertafter=EOF
+    line='export LS_COLORS="$LS_COLORS:di=01;90:"'
+  with_items:
+  - /etc/skel/.bashrc
+  - /root/.bashrc
 
