@@ -9,9 +9,7 @@
     with_items:
     - glusterfs-server
     - cifs-utils
-
-  - name: Create brick directory
-    file: path=/data/glusterfs/sharedvol state=directory
+    - unison
 
   - name: Create box mount directory
     file: path=/mnt/box state=directory
@@ -22,5 +20,9 @@
       line="//10.0.2.2/box /mnt/box cifs credentials=/etc/samba/box.cifs.credentials"
       dest=/etc/fstab
 
+  - name: Create brick directory
+    file: path=/data/glusterfs/cifsvol state=directory
 
+  - name: Create gluster volume
+    command: gluster volume create cifsvol BoxGlusterCifsBrick:/data/glusterfs/cifsvol/brick
 
