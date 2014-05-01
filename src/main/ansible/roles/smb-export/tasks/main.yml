@@ -1,0 +1,12 @@
+---
+- name: Install smb-export
+  apt: pkg={{ item }} install_recommends=no
+  with_items:
+  - samba
+
+- name: Create export directory
+  file: path=/srv/samba/share state=directory mode=0777
+
+- name: Copy smb.conf
+  copy: src=smb.conf dest=/etc/samba/smb.conf owner=root group=root mode=0644
+

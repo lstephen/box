@@ -1,0 +1,3 @@
+---
+- name: Create store serf configuration
+  copy: src=60-store.json dest=/etc/serf/60-store.json owner=root group=root mode=0644

@@ -1,1 +1,1 @@
-include 'BoxBase', 'BoxAnsible', 'BoxDevJava', 'BoxDevFms', 'BoxGlusterCifsBrick'
+include 'BoxBase', 'BoxAnsible', 'BoxDevJava', 'BoxDevFms', 'BoxCifsStore'

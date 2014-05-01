@@ -5,10 +5,18 @@
 - name: "Copy .tmux.conf"
   copy: src=.tmux.conf dest=/etc/skel
 
+- name: Download solarized colors to .tmux.conf
+  get_url:
+    url=https://raw.githubusercontent.com/altercation/solarized/master/tmux/tmuxcolors-256.conf
+    dest=/tmp/tmuxcolors-256.conf
+
+- name: Add solarized colors to .tmux.conf
+  shell: cat /tmp/tmuxcolors-256.conf >> /etc/skel/.tmux.conf
+
 - name: "Add to .bashrc"
   lineinfile:
     dest=/etc/skel/.bashrc
     state=present
     insertafter=EOF
-    line="[[ ! $TERM =~ screen ]] && exec tmux"
+    line="[[ ! $TERM =~ screen ]] && exec tmux -2"
 

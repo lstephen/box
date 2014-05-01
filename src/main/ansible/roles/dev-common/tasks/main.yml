@@ -1,6 +1,2 @@
 ---
-- name: "Install dev-common"
-  apt: pkg={{ item }} install_recommends=no
-  with_items:
-    - git
 

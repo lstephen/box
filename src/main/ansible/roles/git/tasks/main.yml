@@ -1,0 +1,5 @@
+---
+- name: "Install git"
+  apt: pkg={{ item }} install_recommends=no
+  with_items:
+    - git

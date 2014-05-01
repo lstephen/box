@@ -23,12 +23,23 @@
 - name: Create box conf directory
   file: dest=/etc/box state=directory owner=root group=root mode=0755
 
+- name: Download solarized dircolors
+  get_url:
+    url=https://raw.githubusercontent.com/seebi/dircolors-solarized/master/dircolors.256dark
+    dest=/tmp/dircolors.256dark
+
+- name: Copy solarized dircolors
+  copy: src=/tmp/dircolors.256dark dest={{ item }}
+  with_items:
+  - /etc/skel/.dir_colors
+  - /root/.dir_colors
+
 - name: Set better directory color for ls
   lineinfile: 
     dest={{ item }}
     state=present
     insertafter=EOF
-    line='export LS_COLORS="$LS_COLORS:di=01;90:"'
+    line='eval `dircolors ~/.dir_colors`'
   with_items:
   - /etc/skel/.bashrc
   - /root/.bashrc

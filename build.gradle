@@ -55,7 +55,7 @@ subprojects { sp ->
 
     configurations {
         base
-        virtualbox
+        virtualbox 
         vagrant
     }
 
