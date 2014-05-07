@@ -1,0 +1,11 @@
+---
+- name: Install box-store-client
+  apt: pkg={{ item }} install_recommends=no
+  with_items:
+    - cifs-utils
+
+- name: Copy serf mounting script
+  copy: src={{ item }} dest=/etc/serf/event_handler.d owner=root group=root mode=0755
+  with_items:
+  - 40-mount_stores.sudo.sh
+

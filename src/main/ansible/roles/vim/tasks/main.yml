@@ -24,8 +24,14 @@
 - name: Checkout vim plugins
   git: repo={{ item.repo }} dest=/tmp/bundle/{{ item.name }}
   with_items:
-  - { repo: "git://github.com/altercation/vim-colors-solarized.git", name: vim-colors-solarized }
+  - { repo: "git://github.com/altercation/vim-colors-solarized.git",
+      name: vim-colors-solarized }
   - { repo: "git://github.com/tpope/vim-sensible.git", name: vim-sensible }
+  - { repo: "https://github.com/kien/ctrlp.vim.git", name: ctrlp }
+  - { repo: "https://github.com/edsono/vim-matchit.git", name: matchit }
+  - { repo: "https://github.com/scrooloose/nerdtree.git", name: nerdtree }
+  - { repo: "https://github.com/tpope/vim-unimpaired.git",
+      name: vim-unimpaired } 
 
 - name: Install vim plugins
   copy: src=/tmp/bundle dest={{ item }}
@@ -36,8 +42,3 @@
 - name: "Copy vimrc.local"
   copy: src=vimrc.local dest=/etc/vim/vimrc.local owner=root group=root mode=0644
 
-- name: "Set vim as EDITOR"
-  lineinfile: dest={{ item }} line="export EDITOR=vim"
-  with_items:
-  - /etc/skel/.bashrc
-  - /root/.bashrc

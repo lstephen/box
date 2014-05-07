@@ -1,0 +1,10 @@
+---
+- name: Install dev-haskell
+  apt: pkg={{ item }} install_recommends=no
+  with_items:
+  - pkg-config
+  - haskell-platform
+
+- name: Refresh cabal package list
+  command: cabal update
+

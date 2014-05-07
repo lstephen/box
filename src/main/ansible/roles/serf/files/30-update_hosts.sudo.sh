@@ -8,6 +8,12 @@ if [ "$SERF_EVENT" = "member-leave"  \
 then
   read input
   hostname=`echo $input | awk '{print $1}'`
+  self=`hostname`
+
+  if [ "$hostname" = "$self" ]
+  then
+    exit 0
+  fi
   
   # Remove any existing line for the member we received the event for
   echo "Removing $hostname from /etc/hosts"

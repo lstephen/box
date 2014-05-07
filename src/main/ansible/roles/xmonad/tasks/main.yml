@@ -1,0 +1,21 @@
+---
+- name: Install xmonad
+  apt: pkg={{ item }} install_recommends=no
+  with_items:
+  - libxft-dev
+  - libxrandr-dev
+  - xmonad
+  - xmobar
+  - dmenu
+
+- name: Install xmonad haskell packages
+  command: cabal install --global xmonad xmonad-contrib
+
+- name: Create xmonad config directory
+  file: dest=/etc/skel/.xmonad state=directory mode=0777
+
+- name: Copy xmonad.hs
+  copy: src=xmonad.hs dest=/etc/skel/.xmonad/xmonad.hs
+
+- name: Copy xmobarrc
+  copy: src=xmobarrc dest=/etc/skel/.xmobarrc

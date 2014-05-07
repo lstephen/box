@@ -3,7 +3,7 @@
   apt: pkg=tmux install_recommends=no
 
 - name: "Copy .tmux.conf"
-  copy: src=.tmux.conf dest=/etc/skel
+  copy: src=tmux.conf dest=/etc/skel/.tmux.conf
 
 - name: Download solarized colors to .tmux.conf
   get_url:
@@ -12,11 +12,4 @@
 
 - name: Add solarized colors to .tmux.conf
   shell: cat /tmp/tmuxcolors-256.conf >> /etc/skel/.tmux.conf
-
-- name: "Add to .bashrc"
-  lineinfile:
-    dest=/etc/skel/.bashrc
-    state=present
-    insertafter=EOF
-    line="[[ ! $TERM =~ screen ]] && exec tmux -2"
 

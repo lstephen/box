@@ -1,0 +1,45 @@
+
+# If not running interactively, do nothing
+[ -z "$PS1" ] && return
+
+HISTCONTROL=ignoreboth
+shopt -s histappend
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+shopt -s checkwinsize
+
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+RED="\[\033[38;5;124m\]"
+GREEN="\[\033[38;5;64m\]"
+ORANGE="\[\033[38;5;166m\]"
+DARK_GRAY="\[\033[38;5;239m\]"
+BODY_TEXT="\[\033[38;5;244m\]"
+
+if [[ "$USER" == "root" ]]
+then
+  USER_COLOR=$RED
+else
+  USER_COLOR=$GREEN
+fi
+
+export PS1="$USER_COLOR\u$DARK_GRAY@$GREEN\h$DARK_GRAY:$ORANGE\w$DARK_GRAY\$ $BODY_TEXT"
+
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+if [ -f /etc/bash_completion ] && ! shopt -oq posix
+then
+  . /etc/bash_completion
+fi
+
+eval `dircolors ~/.dir_colors`
+
+EDITOR=vim
+
+[[ ! $TERM =~ screen ]] && exec tmux -2
+
+

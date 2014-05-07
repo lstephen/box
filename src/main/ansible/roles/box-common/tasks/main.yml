@@ -34,13 +34,10 @@
   - /etc/skel/.dir_colors
   - /root/.dir_colors
 
-- name: Set better directory color for ls
-  lineinfile: 
-    dest={{ item }}
-    state=present
-    insertafter=EOF
-    line='eval `dircolors ~/.dir_colors`'
+- name: Copy .bashrc
+  copy: src=bashrc dest={{ item }}
   with_items:
   - /etc/skel/.bashrc
   - /root/.bashrc
+
 

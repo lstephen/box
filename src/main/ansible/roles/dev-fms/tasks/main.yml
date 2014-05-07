@@ -1,5 +1,2 @@
 ---
-- name: "Install dev-fms"
-  apt: pkg={{ item }} install_recommends=no
-  with_items:
-    - netbeans
+

@@ -11,24 +11,24 @@ set wmh=0
 map <C-J> <C-W>j<C-W>_
 map <C-k> <C-W>k<C-W>_
 
-map \o o<ESC><UP>
-map \O O<ESC><DOWN>
-
 map K i<Enter><ESC>
-
-set guifont=Consolas:h10
-
-map ,e :sp <C-R>=expand("%:p:h")."/"<CR>
 
 set guioptions+=c
 set noea
 set foldmethod=indent
 set foldlevel=1
-set mps+=<:>
-set mps+=?::
 set list
 
 set statusline=%f\ [%{&ff}]%=\ %c:%l\ %P
+
+if empty($DISPLAY)
+  " Cygwin/tmux cursor settings
+  " TODO: We probably don't want this if we're not using cygwin
+  let &t_ti="\ePtmux;\e\e[1 q\e\\\e[?1049h"
+  let &t_te="\ePtmux;\e\e[0 q\e\\\e[?1049l"
+  let &t_SI="\ePtmux;\e\e[6 q\e\\"
+  let &t_EI="\ePtmux;\e\e[1 q\e\\"
+endif
 
 imap <buffer> ;cr <C-O>mzChange Request: <CR>Description: <CR>Action: <C-O>'z<ESC>$A
 imap <buffer> ;cc <C-O>mz<C-R>=strftime("LS %d/%m/%y")<CR><CR><CR>Added<CR>Modified<CR>Deleted<CR><C-O>'z<ESC>jj
@@ -38,4 +38,9 @@ execute pathogen#infect()
 let g:solarized_termcolors=256
 set background=dark
 colorscheme solarized
+
+map <C-n> :NERDTreeToggle<CR>
+let g:NERDTreeChDirMode=2
+let g:NERDTreeQuitOnOpen=1
+
 
