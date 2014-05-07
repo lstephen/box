@@ -3,3 +3,5 @@
   apt: pkg={{ item }} install_recommends=no
   with_items:
     - git
+    - git-svn
+
