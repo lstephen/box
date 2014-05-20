@@ -26,6 +26,8 @@ fi
 
 export PS1="$USER_COLOR\u$DARK_GRAY@$GREEN\h$DARK_GRAY:$ORANGE\w$DARK_GRAY\$ $BODY_TEXT"
 
+export GREP_COLORS="ms=38;5;124:mc=38;5;124:ln=38;5;64:bn=38;5;244:se=38;5;239:fn=38;5;166"
+
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'

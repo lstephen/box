@@ -1,0 +1,429 @@
+2014/05/16 09:56:37 Packer Version: 0.5.2  be8900cdc7240a8008c507d36f07c4756b4622fe
+2014/05/16 09:56:37 Packer Target OS/Arch: windows 386
+2014/05/16 09:56:37 Built with Go Version: go1.2
+2014/05/16 09:56:37 Attempting to open config file: C:\Users\lstephen\AppData\Roaming\packer.config
+2014/05/16 09:56:37 File doesn't exist, but doesn't need to. Ignoring.
+2014/05/16 09:56:37 Packer config: &{PluginMinPort:0 PluginMaxPort:0 Builders:map[digitalocean:packer-builder-digitalocean googlecompute:packer-builder-googlecompute virtualbox-iso:packer-builder-virtualbox-iso virtualbox-ovf:packer-builder-virtualbox-ovf vmware-vmx:packer-builder-vmware-vmx amazon-ebs:packer-builder-amazon-ebs amazon-chroot:packer-builder-amazon-chroot amazon-instance:packer-builder-amazon-instance docker:packer-builder-docker openstack:packer-builder-openstack qemu:packer-builder-qemu vmware-iso:packer-builder-vmware-iso] Commands:map[build:packer-command-build fix:packer-command-fix inspect:packer-command-inspect validate:packer-command-validate] PostProcessors:map[vagrant:packer-post-processor-vagrant vsphere:packer-post-processor-vsphere docker-push:packer-post-processor-docker-push docker-import:packer-post-processor-docker-import] Provisioners:map[ansible-local:packer-provisioner-ansible-local chef-solo:packer-provisioner-chef-solo file:packer-provisioner-file puppet-masterless:packer-provisioner-puppet-masterless shell:packer-provisioner-shell salt-masterless:packer-provisioner-salt-masterless]}
+2014/05/16 09:56:37 Setting cache directory: C:\Projects\git\Box\BoxCifsStore\packer_cache
+2014/05/16 09:56:37 Environment.Cli: []string{"build", "build/packer/packer.json"}
+2014/05/16 09:56:37 command + args: []string{"build", "build/packer/packer.json"}
+2014/05/16 09:56:37 Loading command: build
+2014/05/16 09:56:37 Creating plugin client for path: c:\packer\packer-command-build.exe
+2014/05/16 09:56:37 Starting plugin: c:\packer\packer-command-build.exe []string{"c:\\packer\\packer-command-build.exe"}
+2014/05/16 09:56:37 Waiting for RPC address for: c:\packer\packer-command-build.exe
+2014/05/16 09:56:37 c:\packer\packer-command-build.exe: 2014/05/16 09:56:37 Plugin build against Packer 'be8900cdc7240a8008c507d36f07c4756b4622fe'
+2014/05/16 09:56:37 c:\packer\packer-command-build.exe: 2014/05/16 09:56:37 Plugin minimum port: 10000
+2014/05/16 09:56:37 c:\packer\packer-command-build.exe: 2014/05/16 09:56:37 Plugin maximum port: 25000
+2014/05/16 09:56:37 c:\packer\packer-command-build.exe: 2014/05/16 09:56:37 Plugin address: tcp 127.0.0.1:10000
+2014/05/16 09:56:37 c:\packer\packer-command-build.exe: 2014/05/16 09:56:37 Waiting for connection...
+2014/05/16 09:56:37 c:\packer\packer-command-build.exe: 2014/05/16 09:56:37 Serving a plugin connection...
+2014/05/16 09:56:37 Executing command: build
+2014/05/16 09:56:37 c:\packer\packer-command-build.exe: 2014/05/16 09:56:37 Reading template: build/packer/packer.json
+2014/05/16 09:56:37 c:\packer\packer-command-build.exe: 2014/05/16 09:56:37 Creating build: virtualbox-ovf
+2014/05/16 09:56:37 Loading builder: virtualbox-ovf
+2014/05/16 09:56:37 Creating plugin client for path: c:\packer\packer-builder-virtualbox-ovf.exe
+2014/05/16 09:56:37 Starting plugin: c:\packer\packer-builder-virtualbox-ovf.exe []string{"c:\\packer\\packer-builder-virtualbox-ovf.exe"}
+2014/05/16 09:56:37 Waiting for RPC address for: c:\packer\packer-builder-virtualbox-ovf.exe
+2014/05/16 09:56:38 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:56:38 Plugin build against Packer 'be8900cdc7240a8008c507d36f07c4756b4622fe'
+2014/05/16 09:56:38 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:56:38 Plugin minimum port: 10000
+2014/05/16 09:56:38 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:56:38 Plugin maximum port: 25000
+2014/05/16 09:56:38 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:56:38 Plugin address: tcp 127.0.0.1:10000
+2014/05/16 09:56:38 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:56:38 Waiting for connection...
+2014/05/16 09:56:38 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:56:38 Serving a plugin connection...
+2014/05/16 09:56:38 Loading post-processor: vagrant
+2014/05/16 09:56:38 Creating plugin client for path: c:\packer\packer-post-processor-vagrant.exe
+2014/05/16 09:56:38 Starting plugin: c:\packer\packer-post-processor-vagrant.exe []string{"c:\\packer\\packer-post-processor-vagrant.exe"}
+2014/05/16 09:56:38 Waiting for RPC address for: c:\packer\packer-post-processor-vagrant.exe
+2014/05/16 09:56:38 c:\packer\packer-post-processor-vagrant.exe: 2014/05/16 09:56:38 Plugin build against Packer 'be8900cdc7240a8008c507d36f07c4756b4622fe'
+2014/05/16 09:56:38 c:\packer\packer-post-processor-vagrant.exe: 2014/05/16 09:56:38 Plugin minimum port: 10000
+2014/05/16 09:56:38 c:\packer\packer-post-processor-vagrant.exe: 2014/05/16 09:56:38 Plugin maximum port: 25000
+2014/05/16 09:56:38 c:\packer\packer-post-processor-vagrant.exe: 2014/05/16 09:56:38 Plugin address: tcp 127.0.0.1:10000
+2014/05/16 09:56:38 c:\packer\packer-post-processor-vagrant.exe: 2014/05/16 09:56:38 Waiting for connection...
+2014/05/16 09:56:38 c:\packer\packer-post-processor-vagrant.exe: 2014/05/16 09:56:38 Serving a plugin connection...
+2014/05/16 09:56:38 Loading provisioner: file
+2014/05/16 09:56:38 Creating plugin client for path: c:\packer\packer-provisioner-file.exe
+2014/05/16 09:56:38 Starting plugin: c:\packer\packer-provisioner-file.exe []string{"c:\\packer\\packer-provisioner-file.exe"}
+2014/05/16 09:56:38 Waiting for RPC address for: c:\packer\packer-provisioner-file.exe
+2014/05/16 09:56:38 c:\packer\packer-provisioner-file.exe: 2014/05/16 09:56:38 Plugin build against Packer 'be8900cdc7240a8008c507d36f07c4756b4622fe'
+2014/05/16 09:56:38 c:\packer\packer-provisioner-file.exe: 2014/05/16 09:56:38 Plugin minimum port: 10000
+2014/05/16 09:56:38 c:\packer\packer-provisioner-file.exe: 2014/05/16 09:56:38 Plugin maximum port: 25000
+2014/05/16 09:56:38 c:\packer\packer-provisioner-file.exe: 2014/05/16 09:56:38 Plugin address: tcp 127.0.0.1:10000
+2014/05/16 09:56:38 c:\packer\packer-provisioner-file.exe: 2014/05/16 09:56:38 Waiting for connection...
+2014/05/16 09:56:38 c:\packer\packer-provisioner-file.exe: 2014/05/16 09:56:38 Serving a plugin connection...
+2014/05/16 09:56:38 Loading provisioner: shell
+2014/05/16 09:56:38 Creating plugin client for path: c:\packer\packer-provisioner-shell.exe
+2014/05/16 09:56:38 Starting plugin: c:\packer\packer-provisioner-shell.exe []string{"c:\\packer\\packer-provisioner-shell.exe"}
+2014/05/16 09:56:38 Waiting for RPC address for: c:\packer\packer-provisioner-shell.exe
+2014/05/16 09:56:38 c:\packer\packer-provisioner-shell.exe: 2014/05/16 09:56:38 Plugin build against Packer 'be8900cdc7240a8008c507d36f07c4756b4622fe'
+2014/05/16 09:56:38 c:\packer\packer-provisioner-shell.exe: 2014/05/16 09:56:38 Plugin minimum port: 10000
+2014/05/16 09:56:38 c:\packer\packer-provisioner-shell.exe: 2014/05/16 09:56:38 Plugin maximum port: 25000
+2014/05/16 09:56:38 c:\packer\packer-provisioner-shell.exe: 2014/05/16 09:56:38 Plugin address: tcp 127.0.0.1:10000
+2014/05/16 09:56:38 c:\packer\packer-provisioner-shell.exe: 2014/05/16 09:56:38 Waiting for connection...
+2014/05/16 09:56:38 c:\packer\packer-provisioner-shell.exe: 2014/05/16 09:56:38 Serving a plugin connection...
+2014/05/16 09:56:38 ui: virtualbox-ovf output will be in this color.
+2014/05/16 09:56:38 ui: 
+2014/05/16 09:56:38 c:\packer\packer-command-build.exe: 2014/05/16 09:56:38 Build debug mode: false
+2014/05/16 09:56:38 c:\packer\packer-command-build.exe: 2014/05/16 09:56:38 Force build: false
+2014/05/16 09:56:38 c:\packer\packer-command-build.exe: 2014/05/16 09:56:38 Preparing build: virtualbox-ovf
+2014/05/16 09:56:38 c:\packer\packer-command-build.exe: 2014/05/16 09:56:38 Waiting on builds to complete...
+2014/05/16 09:56:38 c:\packer\packer-command-build.exe: 2014/05/16 09:56:38 Starting build run: virtualbox-ovf
+2014/05/16 09:56:38 c:\packer\packer-command-build.exe: 2014/05/16 09:56:38 Running builder: virtualbox-ovf
+2014/05/16 09:56:38 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:56:38 [DEBUG] builder/virtualbox: VBOX_INSTALL_PATH: C:\Program Files\Oracle\VirtualBox\
+2014/05/16 09:56:38 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:56:38 VBoxManage path: C:\Program Files\Oracle\VirtualBox\VBoxManage.exe
+2014/05/16 09:56:38 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:56:38 Suppressing annoying messages in VirtualBox
+2014/05/16 09:56:38 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:56:38 Executing VBoxManage: []string{"setextradata", "global", "GUI/RegistrationData", "triesLeft=0"}
+2014/05/16 09:56:38 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:56:38 stdout:
+2014/05/16 09:56:38 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:56:38 stderr:
+2014/05/16 09:56:38 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:56:38 Executing VBoxManage: []string{"setextradata", "global", "GUI/SuppressMessages", "confirmInputCapture,remindAboutAutoCapture,remindAboutMouseIntegrationOff,remindAboutMouseIntegrationOn,remindAboutWrongColorDepth"}
+2014/05/16 09:56:38 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:56:38 stdout:
+2014/05/16 09:56:38 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:56:38 stderr:
+2014/05/16 09:56:38 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:56:38 Executing VBoxManage: []string{"setextradata", "global", "GUI/UpdateCheckCount", "60"}
+2014/05/16 09:56:38 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:56:38 stdout:
+2014/05/16 09:56:38 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:56:38 stderr:
+2014/05/16 09:56:38 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:56:38 Executing VBoxManage: []string{"setextradata", "global", "GUI/UpdateDate", "1 d, 2015-01-01, stable"}
+2014/05/16 09:56:38 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:56:38 stdout:
+2014/05/16 09:56:38 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:56:38 stderr:
+2014/05/16 09:56:38 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:56:38 No floppy files specified. Floppy disk will not be made.
+2014/05/16 09:56:38 ui: ==> virtualbox-ovf: Importing VM: build/base/BoxCommon.ovf
+2014/05/16 09:56:38 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:56:38 Executing VBoxManage: []string{"import", "build/base/BoxCommon.ovf", "--vsys", "0", "--vmname", "BoxCifsStore", "--options", ""}
+2014/05/16 09:56:57 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:56:57 stdout: Disks:  vmdisk1	41943040000	-1	http://www.vmware.com/interfaces/specifications/vmdk.html#streamOptimized	BoxCommon-disk1.vmdk	-1	-1
+2014/05/16 09:56:57 c:\packer\packer-builder-virtualbox-ovf.exe: Virtual system 0:
+2014/05/16 09:56:57 c:\packer\packer-builder-virtualbox-ovf.exe:  0: Suggested OS type: "Ubuntu"
+2014/05/16 09:56:57 c:\packer\packer-builder-virtualbox-ovf.exe:     (change with "--vsys 0 --ostype <type>"; use "list ostypes" to list all possible values)
+2014/05/16 09:56:57 c:\packer\packer-builder-virtualbox-ovf.exe:  1: VM name specified with --vmname: "BoxCifsStore"
+2014/05/16 09:56:57 c:\packer\packer-builder-virtualbox-ovf.exe:  2: Number of CPUs: 1
+2014/05/16 09:56:57 c:\packer\packer-builder-virtualbox-ovf.exe:     (change with "--vsys 0 --cpus <n>")
+2014/05/16 09:56:57 c:\packer\packer-builder-virtualbox-ovf.exe:  3: Guest memory: 512 MB
+2014/05/16 09:56:57 c:\packer\packer-builder-virtualbox-ovf.exe:     (change with "--vsys 0 --memory <MB>")
+2014/05/16 09:56:57 c:\packer\packer-builder-virtualbox-ovf.exe:  4: Network adapter: orig NAT, config 3, extra slot=0;type=NAT
+2014/05/16 09:56:57 c:\packer\packer-builder-virtualbox-ovf.exe:  5: IDE controller, type PIIX4
+2014/05/16 09:56:57 c:\packer\packer-builder-virtualbox-ovf.exe:     (disable with "--vsys 0 --unit 5 --ignore")
+2014/05/16 09:56:57 c:\packer\packer-builder-virtualbox-ovf.exe:  6: IDE controller, type PIIX4
+2014/05/16 09:56:57 c:\packer\packer-builder-virtualbox-ovf.exe:     (disable with "--vsys 0 --unit 6 --ignore")
+2014/05/16 09:56:57 c:\packer\packer-builder-virtualbox-ovf.exe:  7: Hard disk image: source image=BoxCommon-disk1.vmdk, target path=C:\Users\lstephen\VirtualBox VMs\BoxCommon\BoxCommon-disk1.vmdk, controller=5;channel=0
+2014/05/16 09:56:57 c:\packer\packer-builder-virtualbox-ovf.exe:     (change target path with "--vsys 0 --unit 7 --disk path";
+2014/05/16 09:56:57 c:\packer\packer-builder-virtualbox-ovf.exe:     disable with "--vsys 0 --unit 7 --ignore")
+2014/05/16 09:56:57 c:\packer\packer-builder-virtualbox-ovf.exe: Successfully imported the appliance.
+2014/05/16 09:56:57 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:56:57 stderr: 0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
+2014/05/16 09:56:57 c:\packer\packer-builder-virtualbox-ovf.exe: Interpreting C:\Projects\git\Box\BoxCifsStore\build\base\BoxCommon.ovf...
+2014/05/16 09:56:57 c:\packer\packer-builder-virtualbox-ovf.exe: OK.
+2014/05/16 09:56:57 c:\packer\packer-builder-virtualbox-ovf.exe: 0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
+2014/05/16 09:56:57 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:56:57 No floppy disk, not attaching.
+2014/05/16 09:56:57 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:56:57 Looking for available SSH port between 2222 and 4444
+2014/05/16 09:56:57 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:56:57 Trying port: 3499
+2014/05/16 09:56:57 ui: ==> virtualbox-ovf: Creating forwarded port mapping for SSH (host port 3499)
+2014/05/16 09:56:57 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:56:57 Executing VBoxManage: []string{"modifyvm", "BoxCifsStore", "--natpf1", "packerssh,tcp,127.0.0.1,3499,,22"}
+2014/05/16 09:56:57 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:56:57 stdout:
+2014/05/16 09:56:57 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:56:57 stderr:
+2014/05/16 09:56:57 ui: ==> virtualbox-ovf: Executing custom VBoxManage commands...
+2014/05/16 09:56:57 ui:     virtualbox-ovf: Executing: modifyvm BoxCifsStore --hwvirtex off
+2014/05/16 09:56:57 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:56:57 Executing VBoxManage: []string{"modifyvm", "BoxCifsStore", "--hwvirtex", "off"}
+2014/05/16 09:56:57 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:56:57 stdout:
+2014/05/16 09:56:57 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:56:57 stderr:
+2014/05/16 09:56:57 ui: ==> virtualbox-ovf: Starting the virtual machine...
+2014/05/16 09:56:57 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:56:57 Executing VBoxManage: []string{"startvm", "BoxCifsStore", "--type", "gui"}
+2014/05/16 09:56:59 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:56:59 stdout: Waiting for VM "BoxCifsStore" to power on...
+2014/05/16 09:56:59 c:\packer\packer-builder-virtualbox-ovf.exe: VM "BoxCifsStore" has been successfully started.
+2014/05/16 09:56:59 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:56:59 stderr:
+2014/05/16 09:56:59 ui: ==> virtualbox-ovf: Waiting 10s for boot...
+2014/05/16 09:57:09 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:57:09 Waiting for SSH, up to timeout: 20m0s
+2014/05/16 09:57:09 ui: ==> virtualbox-ovf: Waiting for SSH to become available...
+2014/05/16 09:57:14 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:57:14 Attempting SSH connection...
+2014/05/16 09:57:14 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:57:14 reconnecting to TCP connection for SSH
+2014/05/16 09:57:14 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:57:14 handshaking with SSH
+2014/05/16 09:57:21 ui: ==> virtualbox-ovf: Connected to SSH!
+2014/05/16 09:57:21 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:57:21 VBoxManage --version output: 4.3.4r91027
+2014/05/16 09:57:21 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:57:21 VirtualBox version: 4.3.4
+2014/05/16 09:57:21 ui: ==> virtualbox-ovf: Uploading VirtualBox version info (4.3.4)
+2014/05/16 09:57:21 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:57:21 opening new ssh session
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:57:22 Starting remote scp process:  scp -vt .
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:57:22 Started SCP session, beginning transfers...
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:57:22 Copying input data into temporary file so we can read the length
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:57:22 Beginning file upload...
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:57:22 SCP session complete, closing stdin pipe.
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:57:22 Waiting for SSH session to complete.
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:57:22 scp stderr (length 28): Sink: C0644 5 .vbox_version
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 2014/05/16 09:57:22 Running the provision hook
+2014/05/16 09:57:22 Error in Ui RPC call: unexpected EOF
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: panic: runtime error: invalid memory address or nil pointer dereference [recovered]
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	panic: runtime error: invalid memory address or nil pointer dereference
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: [signal 0xc0000005 code=0x0 addr=0x1 pc=0x422a36]
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: goroutine 57 [running]:
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: runtime.panic(0x6a5820, 0xa989ef)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/runtime/panic.c:266 +0xa6
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: encoding/gob.catchError(0x12c4e450)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/encoding/gob/error.go:38 +0x7c
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: runtime.panic(0x6a5820, 0xa989ef)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/runtime/panic.c:248 +0xe8
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: encoding/gob.overflow(0x1, 0x12cc65a0, 0x0, 0x12ca4b80)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/encoding/gob/decode.go:59 +0x54
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: encoding/gob.(*Decoder).compileDec(0x12c4e3c0, 0x15, 0x12c03f00, 0x12ca32b0, 0x0, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/encoding/gob/decode.go:1159 +0x2fa
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: encoding/gob.(*Decoder).getDecEnginePtr(0x12c4e3c0, 0x15, 0x12c03f00, 0x12c496d0, 0x0, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/encoding/gob/decode.go:1190 +0x143
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: encoding/gob.(*Decoder).decOpFor(0x12c4e3c0, 0x15, 0x17c818, 0x62c160, 0x12ca4b40, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/encoding/gob/decode.go:895 +0x984
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: encoding/gob.(*Decoder).decOpFor(0x12c4e3c0, 0x16, 0x17c818, 0x634760, 0x12ca4b40, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/encoding/gob/decode.go:887 +0x872
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: encoding/gob.(*Decoder).compileDec(0x12c4e3c0, 0x14, 0x12c03ec0, 0x12ca3290, 0x0, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/encoding/gob/decode.go:1171 +0x51d
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: encoding/gob.(*Decoder).getDecEnginePtr(0x12c4e3c0, 0x14, 0x12c03ec0, 0x12c494e8, 0x0, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/encoding/gob/decode.go:1190 +0x143
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: encoding/gob.(*Decoder).decOpFor(0x12c4e3c0, 0x14, 0x17c818, 0x6c2500, 0x6e6538, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/encoding/gob/decode.go:895 +0x984
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: encoding/gob.(*Decoder).compileDec(0x12c4e3c0, 0x10, 0x12c1a3a0, 0x12ca3210, 0x0, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/encoding/gob/decode.go:1171 +0x51d
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: encoding/gob.(*Decoder).getDecEnginePtr(0x12c4e3c0, 0x10, 0x12c1a3a0, 0x12c49048, 0x0, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/encoding/gob/decode.go:1190 +0x143
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: encoding/gob.(*Decoder).decodeValue(0x12c4e3c0, 0x10, 0x6928c0, 0x12ca4700, 0x160)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/encoding/gob/decode.go:1235 +0xd8
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: encoding/gob.(*Decoder).recvType(0x12c4e3c0, 0x41)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/encoding/gob/decoder.go:59 +0xab
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: encoding/gob.(*Decoder).decodeTypeSequence(0x12c4e3c0, 0x12ca4600, 0x160)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/encoding/gob/decoder.go:170 +0x8e
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: encoding/gob.(*Decoder).DecodeValue(0x12c4e3c0, 0x62e460, 0x12ca46a0, 0x160, 0x0, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/encoding/gob/decoder.go:223 +0xfa
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: encoding/gob.(*Decoder).Decode(0x12c4e3c0, 0x62e460, 0x12ca46a0, 0x12bda7fc, 0x100)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/encoding/gob/decoder.go:202 +0x162
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: net/rpc.(*gobServerCodec).ReadRequestHeader(0x12ca4680, 0x12ca46a0, 0xaaf988, 0x174148)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/net/rpc/server.go:400 +0x3e
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: net/rpc.(*Server).readRequestHeader(0x12bf6880, 0x17ddd8, 0x12ca4680, 0x0, 0x0, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/net/rpc/server.go:551 +0x6b
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: net/rpc.(*Server).readRequest(0x12bf6880, 0x17ddd8, 0x12ca4680, 0x12bd9730, 0x41c171, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/net/rpc/server.go:518 +0x65
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: net/rpc.(*Server).ServeCodec(0x12bf6880, 0x17ddd8, 0x12ca4680)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/net/rpc/server.go:437 +0x5e
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: net/rpc.(*Server).ServeConn(0x12bf6880, 0x17dd40, 0x12c57640)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/net/rpc/server.go:429 +0x10a
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: github.com/mitchellh/packer/packer/rpc.(*Server).Serve(0x12ca3160)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/code/go/src/github.com/mitchellh/packer/packer/rpc/server.go:148 +0x123
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: created by github.com/mitchellh/packer/packer/rpc.(*hook).Run
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/code/go/src/github.com/mitchellh/packer/packer/rpc/hook.go:34 +0x97
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: goroutine 1 [semacquire]:
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: sync.runtime_Syncsemacquire(0x12c1217c)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/runtime/sema.goc:257 +0xce
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: sync.(*Cond).Wait(0x12c12174)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/sync/cond.go:62 +0x79
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: io.(*pipe).read(0x12c12150, 0x12c43000, 0x1000, 0x1000, 0x0, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/io/pipe.go:52 +0x1d4
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: io.(*PipeReader).Read(0x12bf0958, 0x12c43000, 0x1000, 0x1000, 0x12c46210, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/io/pipe.go:134 +0x54
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: github.com/mitchellh/packer/packer/rpc.(*Stream).Read(0x12bf6480, 0x12c43000, 0x1000, 0x1000, 0x406dd0, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/code/go/src/github.com/mitchellh/packer/packer/rpc/muxconn.go:549 +0x48
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: bufio.(*Reader).fill(0x12bf4330)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/bufio/bufio.go:91 +0xe0
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: bufio.(*Reader).Read(0x12bf4330, 0x12c3f010, 0x1, 0x9, 0x1, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/bufio/bufio.go:159 +0x137
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: io.ReadAtLeast(0x17dda8, 0x12bf4330, 0x12c3f010, 0x1, 0x9, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/io/io.go:288 +0xaf
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: io.ReadFull(0x17dda8, 0x12bf4330, 0x12c3f010, 0x1, 0x9, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/io/io.go:306 +0x5e
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: encoding/gob.decodeUintReader(0x17dda8, 0x12bf4330, 0x12c3f010, 0x9, 0x9, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/encoding/gob/decode.go:66 +0x7f
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: encoding/gob.(*Decoder).recvMessage(0x12c42000, 0x12c4f300)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/encoding/gob/decoder.go:73 +0x48
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: encoding/gob.(*Decoder).decodeTypeSequence(0x12c42000, 0x12c03a00, 0x160)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/encoding/gob/decoder.go:159 +0x45
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: encoding/gob.(*Decoder).DecodeValue(0x12c42000, 0x62e460, 0x12c03aa0, 0x160, 0x0, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/encoding/gob/decoder.go:223 +0xfa
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: encoding/gob.(*Decoder).Decode(0x12c42000, 0x62e460, 0x12c03aa0, 0x0, 0x0)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/encoding/gob/decoder.go:202 +0x162
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: net/rpc.(*gobServerCodec).ReadRequestHeader(0x12c1ada0, 0x12c03aa0, 0x1, 0x41d41b)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/net/rpc/server.go:400 +0x3e
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: net/rpc.(*Server).readRequestHeader(0x12bf6400, 0x17ddd8, 0x12c1ada0, 0x0, 0x0, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/net/rpc/server.go:551 +0x6b
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: net/rpc.(*Server).readRequest(0x12bf6400, 0x17ddd8, 0x12c1ada0, 0x12bf59b0, 0x12c50440, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/net/rpc/server.go:518 +0x65
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: net/rpc.(*Server).ServeCodec(0x12bf6400, 0x17ddd8, 0x12c1ada0)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/net/rpc/server.go:437 +0x5e
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: net/rpc.(*Server).ServeConn(0x12bf6400, 0x17dd40, 0x12bf6480)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/net/rpc/server.go:429 +0x10a
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: github.com/mitchellh/packer/packer/rpc.(*Server).Serve(0x12bf3610)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/code/go/src/github.com/mitchellh/packer/packer/rpc/server.go:148 +0x123
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: main.main()
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/code/go/src/github.com/mitchellh/packer/plugin/builder-virtualbox-ovf/main.go:14 +0x97
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: goroutine 3 [syscall]:
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: os/signal.loop()
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/os/signal/signal_unix.go:21 +0x20
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: created by os/signal.init·1
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/os/signal/signal_unix.go:27 +0x33
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: goroutine 5 [chan receive]:
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: github.com/mitchellh/packer/packer/plugin.func·023()
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/code/go/src/github.com/mitchellh/packer/packer/plugin/server.go:95 +0x52
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: created by github.com/mitchellh/packer/packer/plugin.Server
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/code/go/src/github.com/mitchellh/packer/packer/plugin/server.go:99 +0x93e
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: goroutine 6 [select]:
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: github.com/mitchellh/packer/packer/rpc.(*MuxConn).cleaner(0x12bf58c0)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/code/go/src/github.com/mitchellh/packer/packer/rpc/muxconn.go:222 +0x3a1
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: created by github.com/mitchellh/packer/packer/rpc.NewMuxConn
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/code/go/src/github.com/mitchellh/packer/packer/rpc/muxconn.go:71 +0xdc
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: goroutine 7 [IO wait]:
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: net.runtime_pollWait(0x17db54, 0x72, 0x0)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/runtime/netpoll.goc:116 +0x60
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: net.(*pollDesc).Wait(0x12c14d10, 0x72, 0x17c758, 0x3e5)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/net/fd_poll_runtime.go:81 +0x34
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: net.(*ioSrv).ExecIO(0x12bf0858, 0x12c14c78, 0x6e69c8, 0x7, 0x775b34, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/net/fd_windows.go:188 +0x19d
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: net.(*netFD).Read(0x12c14c40, 0x12c49eb8, 0x4, 0x8, 0x0, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/net/fd_windows.go:451 +0xe7
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: net.(*conn).Read(0x12bf0920, 0x12c49eb8, 0x4, 0x8, 0x1, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/net/net.go:122 +0xaa
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: io.ReadAtLeast(0x17dce0, 0x12bf0920, 0x12c49eb8, 0x4, 0x8, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/io/io.go:288 +0xaf
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: io.ReadFull(0x17dce0, 0x12bf0920, 0x12c49eb8, 0x4, 0x8, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/io/io.go:306 +0x5e
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: encoding/binary.Read(0x17dce0, 0x12bf0920, 0x17dcf8, 0x12bf0920, 0x6330e0, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/encoding/binary/binary.go:146 +0xef
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: github.com/mitchellh/packer/packer/rpc.(*MuxConn).loop(0x12bf58c0)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/code/go/src/github.com/mitchellh/packer/packer/rpc/muxconn.go:274 +0x28b
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: created by github.com/mitchellh/packer/packer/rpc.NewMuxConn
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/code/go/src/github.com/mitchellh/packer/packer/rpc/muxconn.go:72 +0xf1
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: goroutine 8 [chan receive]:
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: github.com/mitchellh/packer/packer/rpc.func·005()
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/code/go/src/github.com/mitchellh/packer/packer/rpc/muxconn.go:508 +0x5b
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: created by github.com/mitchellh/packer/packer/rpc.newStream
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/code/go/src/github.com/mitchellh/packer/packer/rpc/muxconn.go:525 +0x148
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: goroutine 28 [select]:
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: github.com/mitchellh/packer/common.(*StepProvision).Run(0x12c495d0, 0x17e5f8, 0x12c46390, 0x0)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/code/go/src/github.com/mitchellh/packer/common/step_provision.go:41 +0x3db
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: github.com/mitchellh/multistep.(*BasicRunner).Run(0x12c48be0, 0x17e5f8, 0x12c46390)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/code/go/src/github.com/mitchellh/multistep/basic_runner.go:70 +0x27a
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: github.com/mitchellh/packer/builder/virtualbox/ovf.(*Builder).Run(0x12bf3620, 0x17e370, 0x12c453f0, 0x17e398, 0x12c49578, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/code/go/src/github.com/mitchellh/packer/builder/virtualbox/ovf/builder.go:112 +0x88f
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: github.com/mitchellh/packer/packer/rpc.(*BuilderServer).Run(0x12bf3630, 0x1, 0x12c494f8, 0x0, 0x0)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/code/go/src/github.com/mitchellh/packer/packer/rpc/builder.go:93 +0x1c2
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: reflect.Value.call(0x686e00, 0x6b799c, 0x130, 0x6e47a8, 0x4, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/reflect/value.go:474 +0xad7
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: reflect.Value.Call(0x686e00, 0x6b799c, 0x130, 0x3315276c, 0x3, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/reflect/value.go:345 +0x73
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: net/rpc.(*service).call(0x12c21880, 0x12bf6400, 0x12c3e050, 0x12bf59b0, 0x12c50440, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/net/rpc/server.go:381 +0x100
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: created by net/rpc.(*Server).ServeCodec
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/net/rpc/server.go:452 +0x2d2
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: goroutine 31 [select]:
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: github.com/mitchellh/multistep.func·002()
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/code/go/src/github.com/mitchellh/multistep/basic_runner.go:53 +0x110
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: created by github.com/mitchellh/multistep.(*BasicRunner).Run
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/code/go/src/github.com/mitchellh/multistep/basic_runner.go:60 +0x1a2
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: goroutine 30 [semacquire]:
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: sync.runtime_Syncsemacquire(0x12c44dbc)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/runtime/sema.goc:257 +0xce
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: sync.(*Cond).Wait(0x12c44db4)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/sync/cond.go:62 +0x79
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: io.(*pipe).read(0x12c44d90, 0x12c75000, 0x1000, 0x1000, 0x0, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/io/pipe.go:52 +0x1d4
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: io.(*PipeReader).Read(0x12c49508, 0x12c75000, 0x1000, 0x1000, 0x0, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/io/pipe.go:134 +0x54
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: github.com/mitchellh/packer/packer/rpc.(*Stream).Read(0x12c47c80, 0x12c75000, 0x1000, 0x1000, 0x0, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/code/go/src/github.com/mitchellh/packer/packer/rpc/muxconn.go:549 +0x48
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: bufio.(*Reader).fill(0x12c462a0)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/bufio/bufio.go:91 +0xe0
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: bufio.(*Reader).Read(0x12c462a0, 0x12c453d0, 0x1, 0x9, 0x1, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/bufio/bufio.go:159 +0x137
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: io.ReadAtLeast(0x17dda8, 0x12c462a0, 0x12c453d0, 0x1, 0x9, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/io/io.go:288 +0xaf
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: io.ReadFull(0x17dda8, 0x12c462a0, 0x12c453d0, 0x1, 0x9, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/io/io.go:306 +0x5e
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: encoding/gob.decodeUintReader(0x17dda8, 0x12c462a0, 0x12c453d0, 0x9, 0x9, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/encoding/gob/decode.go:66 +0x7f
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: encoding/gob.(*Decoder).recvMessage(0x12c4e0a0, 0x12c4e0c4)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/encoding/gob/decoder.go:73 +0x48
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: encoding/gob.(*Decoder).decodeTypeSequence(0x12c4e0a0, 0x12c5ab00, 0x160)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/encoding/gob/decoder.go:159 +0x45
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: encoding/gob.(*Decoder).DecodeValue(0x12c4e0a0, 0x62e4a0, 0x12c5ab80, 0x160, 0x0, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/encoding/gob/decoder.go:223 +0xfa
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: encoding/gob.(*Decoder).Decode(0x12c4e0a0, 0x62e4a0, 0x12c5ab80, 0x0, 0x0)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/encoding/gob/decoder.go:202 +0x162
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: net/rpc.(*gobClientCodec).ReadResponseHeader(0x12c48ae0, 0x12c5ab80, 0x12c51898, 0x0)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/net/rpc/client.go:221 +0x3e
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: net/rpc.(*Client).input(0x12c47d00)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/net/rpc/client.go:107 +0x95
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: created by net/rpc.NewClientWithCodec
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/net/rpc/client.go:199 +0x8a
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: goroutine 53 [IO wait]:
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: net.runtime_pollWait(0x17dbc0, 0x72, 0x0)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/runtime/netpoll.goc:116 +0x60
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: net.(*pollDesc).Wait(0x12cd1290, 0x72, 0x17c758, 0x3e5)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/net/fd_poll_runtime.go:81 +0x34
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: net.(*ioSrv).ExecIO(0x12bf0858, 0x12cd11f8, 0x6e69c8, 0x7, 0x775b34, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/net/fd_windows.go:188 +0x19d
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: net.(*netFD).Read(0x12cd11c0, 0x12c78000, 0x1000, 0x1000, 0x0, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/net/fd_windows.go:451 +0xe7
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: net.(*conn).Read(0x12c49d58, 0x12c78000, 0x1000, 0x1000, 0x1, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/net/net.go:122 +0xaa
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: bufio.(*Reader).fill(0x12cc5e40)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/bufio/bufio.go:91 +0xe0
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: bufio.(*Reader).Read(0x12cc5e40, 0x12c51a10, 0x5, 0x5, 0x5, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/bufio/bufio.go:159 +0x137
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: code.google.com/p/go.crypto/ssh.(*reader).Read(0x12cd12a0, 0x12c51a10, 0x5, 0x5, 0x1, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/code/go/src/code.google.com/p/go.crypto/ssh/agent.go:1 +0x5b
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: io.ReadAtLeast(0x17e838, 0x12cd12a0, 0x12c51a10, 0x5, 0x5, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/io/io.go:288 +0xaf
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: io.ReadFull(0x17e838, 0x12cd12a0, 0x12c51a10, 0x5, 0x5, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/io/io.go:306 +0x5e
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: code.google.com/p/go.crypto/ssh.(*reader).readPacket(0x12cd12a0, 0x12cce468, 0xffffffff, 0x0, 0x777540, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/code/go/src/code.google.com/p/go.crypto/ssh/transport.go:111 +0xb2
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: code.google.com/p/go.crypto/ssh.(*transport).readPacket(0x12cd12a0, 0x0, 0x0, 0x12c51901, 0x12c51901, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/code/go/src/code.google.com/p/go.crypto/ssh/transport.go:174 +0x34
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: code.google.com/p/go.crypto/ssh.(*ClientConn).mainLoop(0x12cce460)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/code/go/src/code.google.com/p/go.crypto/ssh/client.go:189 +0x62
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: created by code.google.com/p/go.crypto/ssh.clientWithAddress
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/code/go/src/code.google.com/p/go.crypto/ssh/client.go:53 +0x1b5
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: goroutine 29 [chan receive]:
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: github.com/mitchellh/packer/packer/rpc.func·005()
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/code/go/src/github.com/mitchellh/packer/packer/rpc/muxconn.go:508 +0x5b
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: created by github.com/mitchellh/packer/packer/rpc.newStream
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/code/go/src/github.com/mitchellh/packer/packer/rpc/muxconn.go:525 +0x148
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: goroutine 58 [chan receive]:
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: github.com/mitchellh/packer/packer/rpc.func·005()
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/code/go/src/github.com/mitchellh/packer/packer/rpc/muxconn.go:508 +0x5b
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: created by github.com/mitchellh/packer/packer/rpc.newStream
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/code/go/src/github.com/mitchellh/packer/packer/rpc/muxconn.go:525 +0x148
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: goroutine 56 [chan receive]:
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: net/rpc.(*Client).Call(0x12c47d00, 0x6ed9e8, 0x8, 0x62d360, 0x12ca43a0, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/go/src/pkg/net/rpc/client.go:313 +0x95
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: github.com/mitchellh/packer/packer/rpc.(*hook).Run(0x12c49578, 0x70f6c8, 0x10, 0x17e370, 0x12c453f0, ...)
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/code/go/src/github.com/mitchellh/packer/packer/rpc/hook.go:42 +0x13e
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: github.com/mitchellh/packer/common.func·006()
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/code/go/src/github.com/mitchellh/packer/common/step_provision.go:37 +0x6b
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: created by github.com/mitchellh/packer/common.(*StepProvision).Run
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: 	/Users/mitchellh/code/go/src/github.com/mitchellh/packer/common/step_provision.go:38 +0x22c
+2014/05/16 09:57:22 [ERR] Error reading stream direction: WSARecv tcp 127.0.0.1:55194: An existing connection was forcibly closed by the remote host.
+2014/05/16 09:57:22 [INFO] Mux connection loop exiting
+2014/05/16 09:57:22 ui error: Build 'virtualbox-ovf' errored: unexpected EOF
+2014/05/16 09:57:22 machine readable: error-count []string{"1"}
+2014/05/16 09:57:22 c:\packer\packer-command-build.exe: 2014/05/16 09:57:22 Builds completed. Waiting on interrupt barrier...
+2014/05/16 09:57:22 ui error: 
+==> Some builds didn't complete successfully and had errors:
+2014/05/16 09:57:22 machine readable: virtualbox-ovf,error []string{"unexpected EOF"}
+2014/05/16 09:57:22 ui error: --> virtualbox-ovf: unexpected EOF
+2014/05/16 09:57:22 ui: 
+==> Builds finished but no artifacts were created.
+2014/05/16 09:57:22 c:\packer\packer-builder-virtualbox-ovf.exe: plugin process exited
+2014/05/16 09:57:22 waiting for all plugin processes to complete...
+2014/05/16 09:57:22 [ERR] Error reading stream direction: WSARecv tcp 127.0.0.1:55191: An existing connection was forcibly closed by the remote host.
+2014/05/16 09:57:22 [INFO] Mux connection loop exiting
+2014/05/16 09:57:22 [ERR] Error reading stream direction: WSARecv tcp 127.0.0.1:55197: An existing connection was forcibly closed by the remote host.
+2014/05/16 09:57:22 [INFO] Mux connection loop exiting
+2014/05/16 09:57:22 [ERR] Error reading stream direction: WSARecv tcp 127.0.0.1:55203: An existing connection was forcibly closed by the remote host.
+2014/05/16 09:57:22 [INFO] Mux connection loop exiting
+2014/05/16 09:57:22 [ERR] Error reading stream direction: WSARecv tcp 127.0.0.1:55200: An existing connection was forcibly closed by the remote host.
+2014/05/16 09:57:22 [INFO] Mux connection loop exiting
+2014/05/16 09:57:22 c:\packer\packer-command-build.exe: plugin process exited
+2014/05/16 09:57:22 c:\packer\packer-provisioner-shell.exe: plugin process exited
+2014/05/16 09:57:22 c:\packer\packer-post-processor-vagrant.exe: plugin process exited
+2014/05/16 09:57:22 c:\packer\packer-provisioner-file.exe: plugin process exited

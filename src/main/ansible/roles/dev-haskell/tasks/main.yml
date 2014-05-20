@@ -8,3 +8,20 @@
 - name: Refresh cabal package list
   command: cabal update
 
+- name: Install dev-haskell cabal packages
+  command: cabal install --global {{ item }}
+  with_items:
+  - ghc-mod
+  - hlint
+
+- name: Update validate script
+  copy:
+    src=validatehaskell.hs
+    dest=/usr/bin/validatehaskell.hs
+    mode=0755
+    owner=root
+    group=root
+
+- name: Validate validatehaskell.hs
+  command: validatehaskell.hs /usr/bin/validatehaskell.hs
+

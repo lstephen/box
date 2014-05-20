@@ -3,14 +3,13 @@
   roles:
   - { role: box-common, hostname: BoxCifsStore }
   - box-store
+  - box-cifs-store
   tasks:
   - name: Install BoxCifsStore
     apt: pkg={{ item }} install_recommends=no
     with_items:
     - cifs-utils
 
-  - name: Create box mount directory
-    file: path=/mnt/box state=directory
 
   - name: Add CIFS share to fstab
     lineinfile:

@@ -1,0 +1,4 @@
+{
+    "log_level": "debug",
+    "event_handlers": [ "/etc/serf/event_handler.hs" ]
+}

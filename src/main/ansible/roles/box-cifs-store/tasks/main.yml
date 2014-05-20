@@ -1,0 +1,18 @@
+---
+- name: Install box-cifs-store
+  apt: pkg={{ item }} install_recommends=no
+  with_items:
+  - cifs-utils
+
+- name: Create box mount directory
+  file: path=/mnt/box state=directory
+
+- name: Create sharing link
+  file: path=/srv/samba/share/box src=/mnt/box state=link
+
+- name: Copy mount-box.hs script
+  copy: src=mount-box.hs dest=/sbin/mount-box.hs mode=0755 owner=root group=root
+
+- name: Copy mount-box upstart conf
+  copy: src=mount-box.conf dest=/etc/init mode=0644 owner=root group=root
+

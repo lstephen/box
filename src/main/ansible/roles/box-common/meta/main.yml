@@ -1,5 +1,6 @@
 ---
 dependencies:
+  - { role: dnsmasq }
   - { role: vim }
   - { role: tmux }
   - { role: serf }

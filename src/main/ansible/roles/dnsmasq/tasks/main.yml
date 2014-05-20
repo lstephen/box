@@ -1,0 +1,23 @@
+---
+- name: Install dnsmasq
+  apt: pkg={{ item }} install_recommends=no
+  with_items:
+  - dnsmasq
+
+- name: Copy dnsmasq.conf
+  copy: src=dnsmasq.conf dest=/etc/dnsmasq.conf owner=root group=root mode=0644
+
+- name: Create addn-hosts directory
+  file: dest=/etc/hosts.d state=directory owner=root group=root mode=0755
+
+- name: Copy incron file
+  copy:
+    src=incron.d
+    dest=/etc/incron.d/dnsmasq
+    mode=0644
+    owner=root
+    group=root
+
+- name: Restart dnsmasq
+  command: service dnsmasq restart
+

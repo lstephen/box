@@ -3,7 +3,7 @@ Config
   , bgColor = "#262626"
   , fgColor = "#af8700"
   , commands =
-    [ Run Date "%H:%m %d-%b-%y" "date" 10
+    [ Run Date "%H:%M %d-%b-%y" "date" 10
     , Run Com "hostname" [] "" 36000
     , Run StdinReader
     ]

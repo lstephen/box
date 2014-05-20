@@ -1,0 +1,4 @@
+---
+dependencies:
+  - { role: serf }
+  - { role: dev-haskell }

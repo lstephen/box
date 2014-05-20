@@ -15,13 +15,9 @@
   copy: src={{ item }} dest=/sbin/ mode=0755 owner=root group=root
   with_items:
     - mount-box-home.sh
-    - box-conf.sh
 
 - name: Copy upstart script for mounting box home
   copy: src=mount-box-home.conf dest=/etc/init mode=0644 owner=root group=root
-
-- name: Create box conf directory
-  file: dest=/etc/box state=directory owner=root group=root mode=0755
 
 - name: Download solarized dircolors
   get_url:

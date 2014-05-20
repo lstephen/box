@@ -1,12 +1,19 @@
 ---
 - name: Download serf
   get_url:
-    url=https://dl.bintray.com/mitchellh/serf/0.5.0_linux_386.zip
-    dest=/tmp/serf-0.5.0_linux_386.zip
-    sha256sum=9f036ef7243dff4bdc09ff5ad79f4430d72de6c44a710013f1f823000615961c
+    url=https://dl.bintray.com/mitchellh/serf/0.6.0_linux_386.zip
+    dest=/tmp/serf.zip
+    sha256sum=bf140fefe3c2959f99e1e1bea503679752b49a27bf2cbec2414888dca4a6ff64
 
-- name: Install serf
-  unarchive: src=/tmp/serf-0.5.0_linux_386.zip dest=/usr/local/bin copy=no
+- name: Create target directory
+  file: dest=/usr/local/stow/serf/bin state=directory owner=root group=root mode=0755
+
+- name: Unzip serf
+  unarchive: src=/tmp/serf.zip dest=/usr/local/stow/serf/bin copy=no
+
+- name: Stow serf
+  command: stow serf chdir=/usr/local/stow
+
 
 - name: Create serf group
   group: name=serf state=present
@@ -14,32 +21,78 @@
 - name: Create serf user
   user: name=serf createhome=no group=serf
 
+
 - name: Install serf upstart script
   copy: src=serf.conf dest=/etc/init/serf.conf owner=root group=root mode=0644
 
 - name: Create serf configuration directory
-  file: dest=/etc/serf state=directory owner=root group=root mode=0755
+  file: dest=/etc/serf/config.d state=directory owner=root group=root mode=0755
+
+- name: Copy base configuration
+  copy: src=10-base.json dest=/etc/serf/config.d/10-base.json owner=serf group=serf mode=0644
+
 
 - name: Create serf event handlers directory
   file: dest=/etc/serf/event_handler.d state=directory owner=root group=root mode=0755
 
-- name: Copy serf event handlers
-  copy: src={{ item }} dest=/etc/serf/event_handler.d owner=root group=root mode=0755
-  with_items:
-  - 30-update_hosts.sudo.sh
-
-- name: Setup password-less sudo for event handlers
-  copy: src=sudoers.d
-        dest=/etc/sudoers.d/serf
-        mode=0440
-        owner=root
-        group=root
-        validate="visudo -cf %s"
-
 - name: Create serf event handler
-  copy: src=event_handler.sh dest=/etc/serf owner=root group=root mode=0755
+  copy:
+    src=event_handler.hs
+    dest=/etc/serf
+    owner=serf
+    group=serf
+    mode=0744
 
-- name: Create event handler configuration
-  copy: src=50-event_handler.json dest=/etc/serf/50-event_handler.json owner=root group=root mode=0644
+- name: Validate serf event handler
+  shell: validatehaskell.hs /etc/serf/event_handler.hs
 
+
+- name: Copy haskell Serf library
+  copy: src=Serf dest=/etc/serf/event_handler.d/ owner=serf group=serf
+
+- name: Validate haskell Serf library
+  shell: >
+    for f in /etc/serf/event_handler.d/Serf/*.hs;
+    do 
+      validatehaskell.hs $f -g-i/etc/serf/event_handler.d;
+    done;
+
+- name: Create serf hosts file
+  file:
+    dest=/etc/hosts.d/serf.hosts
+    state=touch
+    owner=serf
+    group=serf
+    mode=0644
+
+- name: Copy update hosts event handler
+  copy:
+    src=50-update_hosts.hs
+    dest=/etc/serf/event_handler.d/50-update_hosts.hs
+    mode=0744
+    owner=serf
+    group=serf
+
+- name: Validate update hosts event handler
+  shell: >
+    validatehaskell.hs
+    /etc/serf/event_handler.d/50-update_hosts.hs
+    -g-i/etc/serf/event_handler.d
+
+- name: Copy sudoers file
+  copy:
+    src=sudoers.d
+    dest=/etc/sudoers.d/serf
+    mode=440
+    owner=root
+    group=root
+    validate="visudo -cf %s"
+
+- name: Copy incron file
+  copy:
+    src=incron.d
+    dest=/etc/incron.d/serf
+    mode=0644
+    owner=root
+    group=root
 

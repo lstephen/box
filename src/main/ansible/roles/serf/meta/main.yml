@@ -1,3 +1,8 @@
 ---
 dependencies:
+  - { role: stow }
   - { role: unzip }
+  - { role: dnsmasq }
+  - { role: incron }
+  - { role: dev-haskell }
+

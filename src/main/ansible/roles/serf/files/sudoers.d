@@ -1,6 +1,5 @@
 
-Defaults env_keep += "SERF_EVENT"
+Defaults:serf !requiretty
 
-serf ALL=NOPASSWD: /etc/serf/event_handler.d/*.sh
-
+serf ALL=(root) NOPASSWD: /usr/sbin/service dnsmasq force-reload
 
