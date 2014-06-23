@@ -1,7 +1,8 @@
 ---
 dependencies:
   - { role: dev-java }
-  - { role: remote-gui }
   - { role: box-store-client }
+  - { role: remote-gui }
+  - { role: netbeans }
 
 

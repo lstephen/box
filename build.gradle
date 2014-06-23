@@ -27,7 +27,7 @@ ext {
     srcDir = 'src/main'
     ansibleSrcDir = "$srcDir/ansible"
     packerSrcDir = "$srcDir/packer"
-    
+
     packerSrcFile = "$packerSrcDir/packer.json"
 
     distDir = 'dist'
@@ -51,11 +51,11 @@ def hasBaseBox(project) {
 }
 
 subprojects { sp ->
-    version = 'dev'
+    version = 'development'
 
     configurations {
         base
-        virtualbox 
+        virtualbox
         vagrant
     }
 
@@ -79,7 +79,7 @@ subprojects { sp ->
                     into baseBuildDir
                 }
             }
-            
+
             file(ansibleBuildDir).mkdirs()
 
             copy {
@@ -137,7 +137,7 @@ subprojects { sp ->
 
             exec {
                 executable 'packer'
-                args 'build', "${packerBuildDir}/${file(packerSrcFile).name}"
+                args 'build', '-force', "${packerBuildDir}/${file(packerSrcFile).name}"
             }
         }
     }

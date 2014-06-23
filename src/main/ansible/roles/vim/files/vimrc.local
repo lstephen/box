@@ -2,9 +2,14 @@
 set guioptions-=m
 set guioptions-=T
 
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swp//
+
 set expandtab
-set softtabstop=4
+set softtabstop=2
 set shiftwidth=2
+
+set colorcolumn=76
 
 set wmh=0
 
@@ -15,11 +20,72 @@ map K i<Enter><ESC>
 
 set guioptions+=c
 set noea
-set foldmethod=indent
-set foldlevel=1
 set list
 
-set statusline=%f\ [%{&ff}]%=\ %c:%l\ %P
+set noshowmode
+set number
+set nofoldenable
+
+set ignorecase
+set smartcase
+
+function! g:ToggleColorColumn()
+  if &colorcolumn != ''
+    call g:DisableColorColumn()
+  else
+    call g:EnableColorColumn()
+  endif
+endfunction
+
+function! g:EnableColorColumn()
+  call g:EnableColorColumnSilent()
+  echo 'colorcolumn on'
+endfunction
+
+function! g:EnableColorColumnSilent()
+  execute "set colorcolumn=" . join(range(81,255), ',')
+endfunction
+
+function! g:DisableColorColumn()
+  setlocal colorcolumn&
+  echo 'colorcolumn off'
+endfunction
+
+nnoremap com :call g:ToggleColorColumn()<CR>
+nnoremap [om :call g:EnableColorColumn()<CR>
+nnoremap ]om :call g:DisableColorColumn()<CR>
+
+call g:EnableColorColumnSilent()
+
+" We also use &cul to determine whether we're the active
+" window or not for use in statusline
+augroup BgHighlight
+  autocmd!
+  autocmd WinEnter * set cul
+  autocmd WinLeave * set nocul
+augroup END
+set cul
+
+set statusline=
+
+" Mode
+set statusline+=%7*%{&cul&&(mode()=='n')?'N':''}%*
+set statusline+=%4*%{&cul&&(mode()=='i')?'I':''}%*
+set statusline+=%5*%{&cul&&(mode()=='R')?'R':''}%*
+set statusline+=%6*%{&cul&&(mode()=='v')?'V':''}%*
+set statusline+=%6*%{&cul&&(mode()=='V')?'V':''}%*
+set statusline+=%6*%{&cul&&(mode()=='')?'V':''}%*
+set statusline+=%{&cul?'':'\ '}
+set statusline+=%2*\ ~\ %* 
+
+set statusline+=%3*%{&modified?bufname('%'):''}%* " modified file
+set statusline+=%6*%{&modified?'':bufname('%')}%* " unmodified file
+set statusline+=%=         " Right side
+set statusline+=%{&ff}/   " dos/unix
+set statusline+=%{strlen(&fenc)?&fenc:'none'} " encoding
+set statusline+=%2*\ ~%*
+set statusline+=%3l:%2v     " line/column
+
 
 if empty($DISPLAY)
   " Cygwin/tmux cursor settings
@@ -30,17 +96,65 @@ if empty($DISPLAY)
   let &t_EI="\ePtmux;\e\e[1 q\e\\"
 endif
 
+" TODO: Move these to dev-fms specific setup
 imap <buffer> ;cr <C-O>mzChange Request: <CR>Description: <CR>Action: <C-O>'z<ESC>$A
 imap <buffer> ;cc <C-O>mz<C-R>=strftime("LS %d/%m/%y")<CR><CR><CR>Added<CR>Modified<CR>Deleted<CR><C-O>'z<ESC>jj
 
 execute pathogen#infect()
 
-let g:solarized_termcolors=256
+let g:solarized_termtrans=1
+
 set background=dark
 colorscheme solarized
 
 map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeChDirMode=2
 let g:NERDTreeQuitOnOpen=1
+
+
+hi StatusLine guifg=#073642 ctermfg=0 guibg=#b58900 ctermbg=3
+hi StatusLineNC guifg=#073642 ctermfg=0 guibg=#586e75 ctermbg=10
+
+hi TabLineSel guibg=#cb4b16 ctermbg=9 guifg=#073642 ctermbg=0
+hi TabLine guifg=#586e75 ctermfg=10 guibg=#073642 ctermbg=0
+hi TabLineFill guifg=#586e75 ctermfg=10 guibg=#073642 ctermbg=0
+
+hi CursorLineNr gui=NONE cterm=NONE guifg=#93a1a1 ctermfg=14 guibg=#073642 ctermbg=0
+
+"" Status line colors
+" Light Grey (base0)
+hi User1 guifg=#839496 ctermfg=12 guibg=#073642 ctermbg=0
+" Dark Grey (base01)
+hi User2 guifg=#586e75 ctermfg=10 guibg=#073642 ctermbg=0
+" Orange
+hi User3 guifg=#cb4b16 ctermfg=9 guibg=#073642 ctermbg=0
+" Blue
+hi User4 guifg=#268bd2 ctermfg=4 guibg=#073642 ctermbg=0
+" Red
+hi User5 guifg=#dc322f ctermfg=1 guibg=#073642 ctermbg=0
+"Green
+hi User6 guifg=#859900 ctermfg=2 guibg=#073642 ctermbg=0
+"Yello
+hi User7 guifg=#b58900 ctermfg=3 guibg=#073642 ctermbg=0
+
+function! Tabline()
+  let s = ''
+  for i in range(tabpagenr('$'))
+    let tab = i + 1
+    let winnr = tabpagewinnr(tab)
+    let buflist = tabpagebuflist(tab)
+    let bufnr = buflist[winnr - 1]
+    let bufname = bufname(bufnr)
+
+    let s .= '%' . tab . 'T'
+    let s .= (tab == tabpagenr() ? '%#TabLineSel#' : '%#TabLine#')
+    "let s .= ' ' . tab .':'
+    let s .= (bufname != '' ? ' ' . fnamemodify(bufname, ':t') . ' ' : ' [No Name] ')
+  endfor
+
+  let s .= '%#TabLineFill#'
+  return s
+endfunction
+set tabline=%!Tabline()
 
 

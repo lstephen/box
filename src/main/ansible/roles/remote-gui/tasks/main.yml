@@ -5,9 +5,17 @@
     - xrdp
     - vnc4server
     - xfonts-base
-    - ttf-dejavu
-    - rxvt-unicode-256color
+    - ttf-ubuntu-font-family
+    - rxvt-unicode
 
-- name: "Copy .Xresources"
-  copy: src=Xresources dest=/etc/skel/.Xresources
+- name: "Copy X files"
+  copy: src={{ item }} dest=/etc/skel/.{{ item }}
+  with_items:
+  - Xresources
+  - xsession
+
+- name: Download solarized Xresources
+  get_url:
+    url=https://raw.githubusercontent.com/altercation/solarized/master/xresources/solarized
+    dest=/etc/skel/.solarized
 

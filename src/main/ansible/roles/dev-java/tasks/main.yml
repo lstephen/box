@@ -1,4 +1,7 @@
 ---
+- name: "Add fontfix ppa"
+  apt_repository: repo="ppa:no1wantdthisname/openjdk-fontfix"
+
 - name: "Install dev-java"
   apt: pkg={{ item }} install_recommends=no
   with_items:

@@ -1,7 +1,7 @@
 Config
-  { font = "xft:DejaVu Sans Mono:size=9"
-  , bgColor = "#262626"
-  , fgColor = "#af8700"
+  { font = "xft:Ubuntu Mono:size=12"
+  , bgColor = "#073642"
+  , fgColor = "#b58900"
   , commands =
     [ Run Date "%H:%M %d-%b-%y" "date" 10
     , Run Com "hostname" [] "" 36000

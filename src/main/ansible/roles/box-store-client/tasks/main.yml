@@ -7,10 +7,22 @@
 - name: Copy serf mounting script
   copy: src={{ item }} dest=/etc/serf/event_handler.d owner=serf group=serf mode=0755
   with_items:
-  - 40-mount_stores.hs
+  - 60-mount_stores.hs
+
+- name: Validate mounting script
+  shell: >
+    validatehaskell.hs
+    /etc/serf/event_handler.d/60-mount_stores.hs
+    -g-i/etc/serf/event_handler.d
 
 - name: Update serf sudo permissions
   lineinfile: >
     dest=/etc/sudoers.d/serf
-    line="serf ALL=(root) NOPASSWD: /sbin/mount.cifs /sbin/umount.cifs"
+    line="serf ALL=(root) NOPASSWD: {{ item }} "
+  with_items:
+  - /sbin/mount.cifs
+  - /sbin/umount.cifs
+
+- name: Add serf to mnt group
+  user: name=serf append=yes groups=mnt
 

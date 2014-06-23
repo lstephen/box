@@ -21,7 +21,6 @@
 - name: Create serf user
   user: name=serf createhome=no group=serf
 
-
 - name: Install serf upstart script
   copy: src=serf.conf dest=/etc/init/serf.conf owner=root group=root mode=0644
 

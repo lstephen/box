@@ -1,0 +1,80 @@
+---
+- name: Copy installer
+  copy:
+    src=netbeans-8.0-javase-linux.sh
+    dest=/tmp/netbeans.sh
+    mode=0700
+
+- name: Copy nbm-install.hs
+  copy:
+    src=nbm-install.hs
+    dest=/usr/local/bin/nbm-install.hs
+    owner=root
+    group=root
+    mode=0755
+
+- name: Validate nbm-install.hs
+  command: validatehaskell.hs /usr/local/bin/nbm-install.hs
+
+- name: Install netbeans
+  command: /tmp/netbeans.sh --silent "-J-Dnb-base.installation.location=/usr/local/stow/netbeans"
+
+- name: Stow netbeans
+  file:
+    path=/usr/local/bin/netbeans
+    src=/usr/local/stow/netbeans/bin/netbeans
+    state=link
+    owner=root
+    group=root
+    mode=0755
+
+- name: Create netbeans user directory
+  file:
+    path=/etc/skel/.netbeans/8.0
+    state=directory
+
+- name: Copy initial config
+  copy:
+    src=config
+    dest=/etc/skel/.netbeans/8.0/
+
+- name: Copy netbeans.conf
+  copy:
+    src=netbeans.conf
+    dest=/usr/local/stow/netbeans/etc
+
+- name: Create nbm tmp directories
+  file:
+    state=directory
+    path=/tmp/{{ item }}
+  with_items:
+  - nbvi-1.5.2
+
+- name: Copy nbm files
+  copy:
+    src={{ item }}
+    dest=/tmp/{{ item }}
+  with_items:
+  - nbvi-1.5.2/com-raelity-jvi.nbm
+  - nbvi-1.5.2/com-raelity-nbm-editor_pin.nbm
+  - nbvi-1.5.2/org-netbeans-modules-jvi.nbm
+  - nbvi-1.5.2/org-netbeans-modules-jvi-help.nbm
+  - nbvi-1.5.2/org-netbeans-modules-jvi-spi.nbm
+
+- name: Install nbm files
+  command: nbm-install.hs /tmp/{{ item }}
+  with_items:
+  - nbvi-1.5.2/com-raelity-jvi.nbm
+  - nbvi-1.5.2/com-raelity-nbm-editor_pin.nbm
+  - nbvi-1.5.2/org-netbeans-modules-jvi.nbm
+  - nbvi-1.5.2/org-netbeans-modules-jvi-help.nbm
+  - nbvi-1.5.2/org-netbeans-modules-jvi-spi.nbm
+
+- name: Open netbeans config access
+  file:
+    path=/etc/skel/.netbeans
+    state=directory
+    owner=root
+    group=root
+    mode=0777
+    recurse=yes

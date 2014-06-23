@@ -1,0 +1,19 @@
+---
+- name: "Add infinality ppa"
+  apt_repository: repo="ppa:no1wantdthisname/ppa"
+
+- name: "Install infinality"
+  apt: pkg={{ item }} install_recommends=no
+  with_items:
+    - fontconfig-infinality
+
+- name: "Set font style"
+  command: /etc/fonts/infinality/infctl.sh setstyle linux
+
+- name: "Update USE_STYLE in profile"
+  lineinfile:
+    regexp='^USE_STYLE'
+    line='USE_STYLE="UBUNTU"'
+    dest=/etc/profile.d/infinality-settings.sh
+
+

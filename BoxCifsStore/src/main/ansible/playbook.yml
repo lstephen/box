@@ -11,18 +11,4 @@
     - cifs-utils
 
 
-  - name: Add CIFS share to fstab
-    lineinfile:
-      insertafter=EOF
-      line="//10.0.2.2/box /mnt/box cifs noauto,credentials=/etc/samba/box.cifs.credentials,file_mode=0666,dir_mode=0777,nounix"
-      dest=/etc/fstab
-
-  - name: Add export directory to fstab
-    lineinfile:
-      insertafter=EOF
-      line="/mnt/box /srv/samba/share noauto bind 0 0"
-      dest=/etc/fstab
-
-
-
 

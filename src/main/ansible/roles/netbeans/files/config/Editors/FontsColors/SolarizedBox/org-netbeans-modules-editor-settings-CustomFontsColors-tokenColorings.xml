@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE
+  fontscolors
+  PUBLIC
+  "-//NetBeans//DTD Editor Fonts and Colors settings 1.1//EN"
+  "http://www.netbeans.org/dtds/EditorFontsColors-1_1.dtd">
+
+  <!-- Solarized colors reference
+
+       For light:
+         base3:base00 - default text
+         base2:base01 - highlighted
+
+       base00: ff657b83
+       base3:  fffdf6e3
+    -->
+
+<fontscolors>
+  <fontcolor bgColor="fffdf6e3" foreColor="ff657b83" name="default">
+    <font name="Ubuntu Mono" size="14"/>
+  </fontcolor>
+</fontscolors>
+

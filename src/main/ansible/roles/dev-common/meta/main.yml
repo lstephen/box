@@ -1,6 +1,6 @@
 ---
 dependencies:
-  - { role: git }
   - { role: vim }
   - { role: tmux }
+  - { role: git }
 

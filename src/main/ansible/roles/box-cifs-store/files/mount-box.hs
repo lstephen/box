@@ -2,21 +2,25 @@
 
 {-# LANGUAGE FlexibleContexts #-}
 
-import Control.Applicative
 import Control.Monad
 import Control.Monad.Error
 
+import Data.Monoid
+
 import System.Directory
 import System.Exit
-import System.FilePath
 import System.IO
 import System.Process
 
 type MountBox = ErrorT String IO
 
+runMountBox :: MountBox a -> IO (Either String a)
 runMountBox = runErrorT
 
+mountPoint :: FilePath
 mountPoint = "/mnt/box"
+
+credentials :: FilePath
 credentials = "/etc/samba/box.cifs.credentials"
 
 
@@ -41,7 +45,7 @@ bindToShare = runAndWait cmd errorMessage
 mountCifs :: (MonadIO m, MonadError String m) => m()
 mountCifs = runAndWait cmd errorMessage
   where
-    cmd = "mount -t cifs //10.0.2.2/box /mnt/box -o credentials=" ++ credentials
+    cmd = "mount -t cifs //10.0.2.2/box /mnt/box -o credentials=" `mappend` credentials
     errorMessage = "Mount command failed"
 
 
@@ -49,7 +53,7 @@ checkCredentialsFileExists :: (MonadIO m, MonadError String m) => m ()
 checkCredentialsFileExists =
   unlessM (liftIO $ doesFileExist credentials) (throwError errorMessage)
   where
-    errorMessage = "Credentials file does not exist: " ++ credentials
+    errorMessage = "Credentials file does not exist: " `mappend` credentials
 
 checkNotAlreadyMounted :: (MonadIO m, MonadError String m) => m ()
 checkNotAlreadyMounted = do
@@ -62,12 +66,14 @@ checkNotAlreadyMounted = do
 
   where
     exitCode = runCommand cmd >>= waitForProcess
-    cmd = "mountpoint -q " ++ mountPoint
-    errorMessage = "Already mounted: " ++ mountPoint
+    cmd = "mountpoint -q " `mappend` mountPoint
+    errorMessage = "Already mounted: " `mappend` mountPoint
 
 runAndWait :: (MonadIO m, MonadError String m) => String -> String -> m ()
 runAndWait cmd err = do
+  liftIO . putStrLn $ mconcat ["Running ", cmd, "..."]
   es <- liftIO exitCode
+  liftIO . putStrLn $ mconcat [cmd, " Done. ", show es]
 
   case es of
     ExitFailure _ -> throwError err

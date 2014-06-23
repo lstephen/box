@@ -13,12 +13,14 @@ import Text.Parsec
 type Name = String
 type IpAddress = String
 type Port = String
+type Tags = String
 
 data Member = Member
   { name :: Name
   , ipAddress :: IpAddress
   , port :: Maybe Port
-  , status :: Status
+  , status :: Maybe Status
+  , tags :: Tags
   }
 
 data Status = StatusAlive | StatusLeft | StatusFailed | StatusUnknown
@@ -30,11 +32,15 @@ instance IsString Status where
   fromString "failed" = StatusFailed
   fromString _       =  StatusUnknown
 
+fromMaybeString :: Maybe String -> Maybe Status
+fromMaybeString Nothing  = Nothing
+fromMaybeString (Just s) = Just $ fromString s
 
 members :: IO [Member]
 members = do
   output <- readProcess "serf" ["members"] ""
-  filter (isStatus StatusAlive) <$> catMaybes <$> mapM fromParsed (readMembers output)
+  filter (isStatus StatusAlive)
+    <$> catMaybes <$> mapM fromParsed (readMembers output)
   where
     readMembers :: String -> [Either ParseError Member]
     readMembers = fmap memberFromString . lines
@@ -46,7 +52,7 @@ members = do
       return Nothing
 
 isStatus :: Status -> Member -> Bool
-isStatus s m = status m == s
+isStatus s m = status m == Just s
 
 memberFromString :: String -> Either ParseError Member
 memberFromString s = parse parser s s
@@ -58,7 +64,9 @@ memberFromString s = parse parser s s
         ip <- many1 (digit <|> char '.')
         p <- optionMaybe $ char ':' >> many1 digit
         whitespace
-        st <- fromString <$> many1 letter
-        return $ Member n ip p st
+        st <- fromMaybeString <$> optionMaybe (many1 letter) 
+        option () whitespace
+        ts <- many anyChar
+        return $ Member n ip p st ts
 
       whitespace = skipMany (space <|> tab)

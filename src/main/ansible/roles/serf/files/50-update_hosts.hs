@@ -34,6 +34,3 @@ formatHost :: Host -> String
 formatHost (Host i n) = mconcat [i, " ", n]
 
 
-
-
-

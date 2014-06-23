@@ -7,11 +7,14 @@
 - name: Create box mount directory
   file: path=/mnt/box state=directory
 
-- name: Create sharing link
-  file: path=/srv/samba/share/box src=/mnt/box state=link
+- name: Create sharing directory
+  file: path=/srv/samba/share/box state=directory mode=0777 owner=nobody group=nogroup
 
 - name: Copy mount-box.hs script
   copy: src=mount-box.hs dest=/sbin/mount-box.hs mode=0755 owner=root group=root
+
+- name: Validate mount-box.hs script
+  command: validatehaskell.hs /sbin/mount-box.hs
 
 - name: Copy mount-box upstart conf
   copy: src=mount-box.conf dest=/etc/init mode=0644 owner=root group=root

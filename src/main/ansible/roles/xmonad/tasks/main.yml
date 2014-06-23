@@ -17,5 +17,12 @@
 - name: Copy xmonad.hs
   copy: src=xmonad.hs dest=/etc/skel/.xmonad/xmonad.hs
 
+- name: Validate xmonad.hs
+  command: validatehaskell.hs /etc/skel/.xmonad/xmonad.hs
+
 - name: Copy xmobarrc
   copy: src=xmobarrc dest=/etc/skel/.xmobarrc
+
+- name: Let Java know we're nonreparenting
+  lineinfile: dest=/etc/environment line=_JAVA_AWT_WM_NONREPARENTING=1
+

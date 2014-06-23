@@ -7,9 +7,9 @@
 
 - name: Download solarized colors to .tmux.conf
   get_url:
-    url=https://raw.githubusercontent.com/altercation/solarized/master/tmux/tmuxcolors-256.conf
-    dest=/tmp/tmuxcolors-256.conf
+    url=https://raw.githubusercontent.com/altercation/solarized/master/tmux/tmuxcolors-dark.conf
+    dest=/tmp/tmuxcolors-dark.conf
 
 - name: Add solarized colors to .tmux.conf
-  shell: cat /tmp/tmuxcolors-256.conf >> /etc/skel/.tmux.conf
+  shell: cat /tmp/tmuxcolors-dark.conf >> /etc/skel/.tmux.conf
 

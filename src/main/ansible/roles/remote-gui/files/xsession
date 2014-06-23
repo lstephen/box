@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+wmname LG3D
+urxvtd -q -o -f &
+exec xmonad
+

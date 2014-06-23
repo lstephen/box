@@ -10,6 +10,18 @@
   - /root/.vim/autoload
   - /root/.vim/bundle
 
+- name: "Create vim modifiable directories"
+  file: path={{ item }} state=directory mode=0777
+  with_items:
+  - /etc/skel/.vim/autoload
+  - /etc/skel/.vim/bundle
+  - /etc/skel/.vim/backup
+  - /etc/skel/.vim/swp
+  - /root/.vim/autoload
+  - /root/.vim/bundle
+  - /root/.vim/backup
+  - /root/.vim/swp
+
 - name: "Download pathogen"
   get_url:
     url="https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim"
@@ -24,9 +36,10 @@
 - name: Checkout vim plugins
   git: repo={{ item.repo }} dest=/tmp/bundle/{{ item.name }}
   with_items:
-  - { repo: "git://github.com/altercation/vim-colors-solarized.git",
+  - { repo: "https://github.com/altercation/vim-colors-solarized.git",
       name: vim-colors-solarized }
-  - { repo: "git://github.com/tpope/vim-sensible.git", name: vim-sensible }
+  - { repo: "https://github.com/tpope/vim-sensible.git",
+      name: vim-sensible }
   - { repo: "https://github.com/kien/ctrlp.vim.git", name: ctrlp }
   - { repo: "https://github.com/edsono/vim-matchit.git", name: matchit }
   - { repo: "https://github.com/scrooloose/nerdtree.git", name: nerdtree }

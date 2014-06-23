@@ -5,27 +5,35 @@
 - name: Update hosts file
   lineinfile:
     dest=/etc/hosts
-    regexp="^127.0.1.1"
     line="127.0.1.1 {{ hostname }}"
+    regexp="^127.0.1.1"
     owner=root
     group=root
     mode=0644
 
-- name: Copy /sbin scripts
-  copy: src={{ item }} dest=/sbin/ mode=0755 owner=root group=root
-  with_items:
-    - mount-box-home.sh
+- name: Copy mount-box-home script
+  copy:
+    src=mount-box-home.sh
+    dest=/sbin/mount-box-home.sh
+    owner=root
+    group=root
+    mode=0755 
 
-- name: Copy upstart script for mounting box home
-  copy: src=mount-box-home.conf dest=/etc/init mode=0644 owner=root group=root
+- name: Copy mount-box-home upstart conf
+  copy:
+    src=mount-box-home.conf
+    dest=/etc/init/mount-box-home.conf
+    owner=root
+    group=root
+    mode=0644
 
 - name: Download solarized dircolors
   get_url:
-    url=https://raw.githubusercontent.com/seebi/dircolors-solarized/master/dircolors.256dark
-    dest=/tmp/dircolors.256dark
+    url=https://raw.githubusercontent.com/seebi/dircolors-solarized/master/dircolors.ansi-dark
+    dest=/tmp/dircolors.ansi-dark
 
 - name: Copy solarized dircolors
-  copy: src=/tmp/dircolors.256dark dest={{ item }}
+  copy: src=/tmp/dircolors.ansi-dark dest={{ item }}
   with_items:
   - /etc/skel/.dir_colors
   - /root/.dir_colors
@@ -36,4 +44,10 @@
   - /etc/skel/.bashrc
   - /root/.bashrc
 
+- name: Create mnt group
+  group: name=mnt
+
+- name: Setup /mnt directory
+  file: path=/mnt state=directory owner=root group=mnt mode=0775
+  
 

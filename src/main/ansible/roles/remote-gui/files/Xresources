@@ -1,7 +1,9 @@
 
-URxvt.*font: xft:DejaVu Sans Mono:size=9
-URxvt.*background: #1c1c1c
-URxvt.*foreground: #808080
+*font: xft:Ubuntu Mono:size=12
+URxvt.boldFont:
 
 URxvt.*scrollBar: false
+URxvt.intensityStyles: false
+
+#include ".solarized"
 
