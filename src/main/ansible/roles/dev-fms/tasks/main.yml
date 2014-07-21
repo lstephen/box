@@ -1,2 +1,6 @@
 ---
-
+- name: Copy vimfiles
+  copy: src=vimfiles dest={{ item }}
+  with_items:
+  - /etc/skel/.vim/
+  - /root/.vim/

@@ -1,0 +1,9 @@
+---
+- hosts: all
+  roles:
+  - { role: box-common, hostname: BoxRsyncStore }
+  - box-store
+  - box-rsync-store
+
+
+

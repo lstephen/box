@@ -10,17 +10,25 @@
   - /root/.vim/autoload
   - /root/.vim/bundle
 
-- name: "Create vim modifiable directories"
-  file: path={{ item }} state=directory mode=0777
+- name: Copy vimfiles
+  copy: src=vimfiles dest={{ item }}
   with_items:
-  - /etc/skel/.vim/autoload
-  - /etc/skel/.vim/bundle
-  - /etc/skel/.vim/backup
+  - /etc/skel/.vim/
+  - /root/.vim/
+
+- name: Open swp and backup config access
+  file:
+    path={{ item }}
+    state=directory
+    owner=root
+    group=root
+    mode=0777
+    recurse=yes
+  with_items:
   - /etc/skel/.vim/swp
-  - /root/.vim/autoload
-  - /root/.vim/bundle
-  - /root/.vim/backup
+  - /etc/skel/.vim/backup
   - /root/.vim/swp
+  - /root/.vim/backup
 
 - name: "Download pathogen"
   get_url:
@@ -36,6 +44,11 @@
 - name: Checkout vim plugins
   git: repo={{ item.repo }} dest=/tmp/bundle/{{ item.name }}
   with_items:
+  - { repo: "https://github.com/tomtom/tlib_vim.git", name: tlib }
+  - { repo: "https://github.com/MarcWeber/vim-addon-mw-utils.git",
+      name: vim-addon-mw-utils }
+  - { repo: "https://github.com/garbas/vim-snipmate.git",
+      name: vim-snipmate }
   - { repo: "https://github.com/altercation/vim-colors-solarized.git",
       name: vim-colors-solarized }
   - { repo: "https://github.com/tpope/vim-sensible.git",
@@ -45,13 +58,17 @@
   - { repo: "https://github.com/scrooloose/nerdtree.git", name: nerdtree }
   - { repo: "https://github.com/tpope/vim-unimpaired.git",
       name: vim-unimpaired } 
+  - { repo: "https://github.com/scrooloose/syntastic.git", name: syntastic }
+  - { repo: "https://github.com/ynkdir/vim-vimlparser.git", name: vimparser }
+  - { repo: "https://github.com/syngan/vim-vimlint.git", name: vimlint }
 
 - name: Install vim plugins
   copy: src=/tmp/bundle dest={{ item }}
   with_items:
   - /etc/skel/.vim/
   - /root/.vim/
-  
+
 - name: "Copy vimrc.local"
-  copy: src=vimrc.local dest=/etc/vim/vimrc.local owner=root group=root mode=0644
+  copy:
+    src=vimrc.local dest=/etc/vim/vimrc.local owner=root group=root mode=0644
 

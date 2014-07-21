@@ -45,7 +45,7 @@ bindToShare = runAndWait cmd errorMessage
 mountCifs :: (MonadIO m, MonadError String m) => m()
 mountCifs = runAndWait cmd errorMessage
   where
-    cmd = "mount -t cifs //10.0.2.2/box /mnt/box -o credentials=" `mappend` credentials
+    cmd = "mount -t cifs //10.0.2.2/box /mnt/box -o credentials=" `mappend` credentials `mappend` ",file_mode=0666,dir_mode=0777"
     errorMessage = "Mount command failed"
 
 

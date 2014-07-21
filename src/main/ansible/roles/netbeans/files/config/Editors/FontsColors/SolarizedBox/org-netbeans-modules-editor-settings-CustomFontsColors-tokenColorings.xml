@@ -11,13 +11,45 @@
          base3:base00 - default text
          base2:base01 - highlighted
 
+       base03: ff002b36
+       base01: ff586e75
        base00: ff657b83
+       base1:  ff93a1a1
+       base2:  ffeee8d5
        base3:  fffdf6e3
+       yellow: ffb58900
+       red:    ffdc322f
+       blue:   ff268bd2
+       cyan:   ff2aa198
     -->
 
 <fontscolors>
   <fontcolor bgColor="fffdf6e3" foreColor="ff657b83" name="default">
     <font name="Ubuntu Mono" size="14"/>
   </fontcolor>
+
+  <fontcolor name="field" default="default"/>
+
+  <fontcolor name="comment" foreColor="ff93a1a1">
+    <font style="italic"/>
+  </fontcolor>
+
+  <fontcolor name="string" foreColor="ff2aa198"/>
+  <fontcolor name="char" foreColor="ff2aa198"/>
+  <fontcolor name="number" foreColor="ff2aa198"/>
+
+  <fontcolor name="keyword" foreColor="ffb58900"/>
+
+  <fontcolor name="error" waveUnderlined="ffdc322f"/>
+  <fontcolor name="warning" waveUnderlined="ffb58900"/>
+
+  <fontcolor name="entity-reference" foreColor="ffdc322f"/>
+
+  <fontcolor name="url" underline="ff268bd2"/>
+
+  <fontcolor name="markup-element" foreColor="ff268bd2"/>
+  <fontcolor name="markup-attribute" foreColor="ffb58900"/>
+  <fontcolor name="markup-attribute-value" default="string"/>
+
 </fontscolors>
 

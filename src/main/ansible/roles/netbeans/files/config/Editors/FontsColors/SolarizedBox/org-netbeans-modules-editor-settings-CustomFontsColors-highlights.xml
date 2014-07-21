@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE
+  fontscolors
+  PUBLIC
+  "-//NetBeans//DTD Editor Fonts and Colors settings 1.1//EN"
+  "http://www.netbeans.org/dtds/EditorFontsColors-1_1.dtd">
+
+
+<fontscolors>
+  <fontcolor name="highlight-caret-row" bgColor="ffeee8d5"/>
+
+  <fontcolor name="caret-color-insert-mode" foreColor="ff002b36"/>
+  <fontcolor name="caret-color-overwrite-mode" foreColor="0ff657b83"/>
+
+  <fontcolor name="selection" bgColor="ff93a1a1" foreColor="fffdf6e3"/>
+
+  <fontcolor name="text-limit-line-color" foreColor="ffeee8d5"/>
+
+  <fontcolor
+    name="nbeditor-bracesMatching-match"
+    foreColor="ffdc322f">
+    <font style="bold"/>
+  </fontcolor>
+
+  <fontcolor
+    name="nbeditor-bracesMatching-mismatch"
+    foreColor="ffdc322f">
+    <font style="bold"/>
+  </fontcolor>
+
+  <fontcolor
+    name="nbeditor-bracesMatching-match-multichar" 
+    default="default"/>
+
+  <fontcolor
+    name="nbeditor-bracesMatching-mismatch-multichar"
+    default="default"/>
+
+  <fontcolor name="hyperlinks" foreColor="ff268bd2" underline="ff268bd2"/>
+
+</fontcolors>
+

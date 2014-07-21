@@ -1,9 +1,12 @@
 
 *font: xft:Ubuntu Mono:size=12
-URxvt.boldFont:
 
 URxvt.*scrollBar: false
 URxvt.intensityStyles: false
 
 #include ".solarized"
+
+URxvt.colorBD: S_Base1
+URxvt.colorIT: S_Base1
+URxvt.colorUL: S_Base1
 
