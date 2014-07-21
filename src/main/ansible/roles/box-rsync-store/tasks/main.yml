@@ -4,14 +4,6 @@
   with_items:
   - rsync
 
-- name: Copy rsync-store.hs script
-  copy:
-    src=rsync-store.hs
-    dest=/sbin/rsync-store.hs mode=0755 owner=root group=root
-
-- name: Validate rsync-store.hs script
-  command: validatehaskell.hs /sbin/rsync-store.hs
-
 - name: Copy rsync-store upstart conf
   copy: src=rsync-store.conf dest=/etc/init mode=0644 owner=root group=root
 
