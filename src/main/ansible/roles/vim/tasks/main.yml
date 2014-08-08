@@ -1,6 +1,9 @@
 ---
 - name: "Install vim"
   apt: pkg=vim install_recommends=no
+  with_items:
+    - vim
+    - silversearcher-ag
 
 - name: "Create vim directories"
   file: path={{ item }} state=directory
@@ -61,6 +64,7 @@
   - { repo: "https://github.com/scrooloose/syntastic.git", name: syntastic }
   - { repo: "https://github.com/ynkdir/vim-vimlparser.git", name: vimparser }
   - { repo: "https://github.com/syngan/vim-vimlint.git", name: vimlint }
+  - { repo: "https://github.com/rking/ag.vim", name: ag }
 
 - name: Install vim plugins
   copy: src=/tmp/bundle dest={{ item }}

@@ -2,7 +2,7 @@
 - name: Install box-store-client
   apt: pkg={{ item }} install_recommends=no
   with_items:
-    - cifs-utils
+    - glusterfs-client
 
 - name: Copy serf mounting script
   copy: src={{ item }} dest=/etc/serf/event_handler.d owner=serf group=serf mode=0755
@@ -15,14 +15,15 @@
     /etc/serf/event_handler.d/60-mount_stores.hs
     -g-i/etc/serf/event_handler.d
 
+- name: Add serf to mnt group
+  user: name=serf append=yes groups=mnt
+
 - name: Update serf sudo permissions
   lineinfile: >
     dest=/etc/sudoers.d/serf
     line="serf ALL=(root) NOPASSWD: {{ item }} "
   with_items:
-  - /sbin/mount.cifs
-  - /sbin/umount.cifs
+  - /sbin/mount.glusterfs
+  - /sbin/umount.glusterfs
 
-- name: Add serf to mnt group
-  user: name=serf append=yes groups=mnt
 

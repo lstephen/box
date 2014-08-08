@@ -8,5 +8,11 @@
   copy: src=rsync-store.conf dest=/etc/init mode=0644 owner=root group=root
 
 - name: Create /data/box directory
-  file: path=/data/box state=directory owner=nobody group=nogroup mode=0777
+  file:
+      path=/data/box
+      src=/data/glusterfs/box/brick
+      state=link
+      owner=nobody
+      group=nogroup
+      mode=0777
 

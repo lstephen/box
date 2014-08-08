@@ -46,14 +46,14 @@ isMounted m = mountpoint $ getMountPoint m
 -- Raw mount/umount/mountpoint commands
 --
 umount :: FilePath -> IO ExitCode
-umount mnt = spawnProc "sudo" ["umount.cifs", "-f", "-l", mnt] >>= waitForProcess
+umount mnt = spawnProc "sudo" ["umount.glusterfs", "-f", "-l", mnt] >>= waitForProcess
 
 -- TODO: Log failures of the mount command. Is this done by mount itself?
 mount :: String -> FilePath -> IO ExitCode
 mount host mnt = spawn >>= waitForProcess
   where
-    spawn = spawnProc "sudo" ["mount.cifs", share ,mnt, "-o", "guest"]
-    share = mconcat ["//", host, "/export"]
+    spawn = spawnProc "sudo" ["mount.glusterfs", share ,mnt]
+    share = mconcat [host, ":/box"]
 
 mountpoint :: FilePath -> IO Bool
 mountpoint mnt = (==) ExitSuccess <$> runMountpoint

@@ -47,12 +47,16 @@
 
 
 - name: Copy haskell Serf library
-  copy: src=Serf dest=/etc/serf/event_handler.d/ owner=serf group=serf
+  copy:
+    src=Serf/
+    dest=/etc/serf/event_handler.d/Serf
+    owner=serf
+    group=serf
 
 - name: Validate haskell Serf library
   shell: >
     for f in /etc/serf/event_handler.d/Serf/*.hs;
-    do 
+    do
       validatehaskell.hs $f -g-i/etc/serf/event_handler.d;
     done;
 

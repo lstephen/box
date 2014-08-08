@@ -1,3 +1,33 @@
 ---
+- name: Install box-store
+  apt: pkg={{ item }} install_recommends=no
+  with_items:
+    - glusterfs-server
+
+- name: Create brick directory
+  file:
+    path=/data/glusterfs/box/brick
+    state=directory
+    owner=nobody
+    group=nogroup
+    mode=0777
+
+- name: Create gluster volume
+  shell: >
+    gluster
+    volume create box
+    `hostname`:/data/glusterfs/box/brick
+    force
+
+- name: Start gluster volume
+  command: gluster volume start box
+
 - name: Create store serf configuration
-  copy: src=60-store.json dest=/etc/serf/config.d/60-store.json owner=serf group=serf mode=0644
+  copy:
+    src=60-store.json
+    dest=/etc/serf/config.d/60-store.json
+    owner=serf
+    group=serf
+    mode=0644
+
+
