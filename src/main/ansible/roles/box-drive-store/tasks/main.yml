@@ -1,0 +1,7 @@
+---
+- name: Install box-drive-store go
+  command: go get {{ item }}
+  with_items:
+    - "github.com/rakyll/drive"
+
+

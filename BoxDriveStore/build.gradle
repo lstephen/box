@@ -1,0 +1,5 @@
+
+dependencies {
+    base project(path: ':BoxCommon', configuration: 'virtualbox')
+}
+

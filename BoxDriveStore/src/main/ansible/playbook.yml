@@ -1,0 +1,9 @@
+---
+- hosts: all
+  roles:
+  - { role: box-common, hostname: BoxDriveStore }
+  - box-store
+  - box-drive-store
+
+
+
